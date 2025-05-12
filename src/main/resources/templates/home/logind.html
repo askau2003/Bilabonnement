@@ -3,7 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Bilabonnement Login</title>
-    <link rel="stylesheet" href="style??.css">
+    <style>
+        /* Centeret indholdet*/
+        body
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Fyld hele højden af vinduet */
+            margin: 0;
+            background-color: #f9f9f9; /* Let baggrund, valgfrit */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Centrer alt i boksen og giv lidt afstand */
+        div
+        {
+            text-align: center;
+        }
+
+        .logo
+        {
+            max-width: 500px;
+            margin-bottom: 100px;
+        }
+    </style>
 </head>
 <body>
 <div>
@@ -14,10 +38,10 @@
     <h1>🔒 Log ind</h1>
 
     <!-- Login-formular -->
-    <form>
+    <form action ="logindhome" method="get">
         <input type = "text" placeholder="Brugernavn" required>
-        <input type = "text" placeholder="Adgangskode" required>
-        <input type = "submit" value = "Indsend">
+        <input type = "password" placeholder="Adgangskode" required>
+        <input type = "submit" value = "Log Ind">
     </form>
 </div>
 

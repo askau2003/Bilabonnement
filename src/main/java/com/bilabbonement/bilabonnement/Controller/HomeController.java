@@ -11,4 +11,10 @@ public class HomeController
     {
         return "home/logind";
     }
+
+    @GetMapping("/logindhome")
+       public String showLogindHome()
+    {
+        return "home/logindhome";
+    }
 }
