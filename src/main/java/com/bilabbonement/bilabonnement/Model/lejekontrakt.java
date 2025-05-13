@@ -10,6 +10,8 @@ public class lejekontrakt {
     private int pris;
     private int depositum;
     private String valuta; // EURO, DKK
+    private LocalDate oprettelsesdato;
+    private LocalDate betalingsdato;
     private int afhentnings_adresse;
     private int afleverings_adresse;
     private int vognnummer;
