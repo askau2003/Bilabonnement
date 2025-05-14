@@ -1,6 +1,7 @@
 package com.bilabbonement.bilabonnement.Repository;
 
 import com.bilabbonement.bilabonnement.Model.Lejekontrakt;
+import com.bilabbonement.bilabonnement.Model.OmsaetningMaaned;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,6 +14,7 @@ import java.util.List;
 public class LejekontraktRepository {
     @Autowired
     JdbcTemplate template;
+
 
 
     public void opretLejeKontrakt(Lejekontrakt kontrakt) {
@@ -43,13 +45,14 @@ public class LejekontraktRepository {
         // queryForObject bruges når man kun får en enkelt værdi tilbage, nærmest lavet til AVG,SUM osv.
     }
 
-    public Double omsaetningMaaned() {
+    public List<OmsaetningMaaned> omsaetningMaaned() {
         // tager pris og depositum og plusser det sammen, men kun fra den første til den første i den måned vi er i.
-        String sql = "SELECT SUM(pris) + SUM(depositum) as omsaetning" +
-                " FROM lejekontrakt " +
-                "WHERE betalingsdato >= DATE_FORMAT(CURDATE(), '%Y-%m-01') " +
-                "AND betalingsdato < DATE_FORMAT(CURDATE() + INTERVAL 1 MONTH, '%Y-%m-01')";
-        return template.queryForObject(sql, Double.class);
-        // queryForObject bruges når man kun får en enkelt værdi tilbage, nærmest lavet til AVG,SUM osv.
+        String sql = "SELECT valuta, SUM(pris) + SUM(depositum) as omsaetning\n" +
+                "FROM lejekontrakt\n" +
+                "WHERE betalingsdato >= DATE_FORMAT(CURDATE(), '%Y-%m-01')\n" +
+                "AND betalingsdato < DATE_FORMAT(CURDATE() + INTERVAL 1 MONTH, '%Y-%m-01')\n" +
+                "GROUP BY valuta";
+        RowMapper<OmsaetningMaaned> rowMapper = new BeanPropertyRowMapper<>(OmsaetningMaaned.class);
+        return template.query(sql, rowMapper);
     }
 }
