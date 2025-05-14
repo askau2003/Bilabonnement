@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opretkontrakt</title>
+    <link rel="stylesheet" href="/css/lejeaftale.css">
+        </head>
+<body>
+<div class="contain">
+    <div class="logo">
+<img src="images/BILABONNEMENT_logo.png" alt="BilAbonnement Logo" class="logo"><br>
+
+        <!--Actions til og oprette en kontrakt-->
+    </div>
+<form action="/opretkontrakt" method="post">
+    <label for="pris">Pris:</label>
+    <input type="number" id="pris" name="pris"><br>
+
+    <label for="depositum">Depositum:</label>
+    <input type="number" id="depositum" name="depositum"><br>
+
+    <label>Valuta:</label>
+    <input type="radio" id="euro" name="valuta" value="euro">
+    <label for="euro">Euro</label>
+    <input type="radio" id="dkk" name="valuta" value="dkk">
+    <label for="dkk">DKK</label><br>
+
+    <label for="vognnummer">Vogn_Nummer:</label>
+    <input type="number" id="vognnummer" name="vognnummer"><br>
+
+    <label for="startdato">Start_Dato:</label>
+    <input type="date" id="startdato" name="startdato">
+
+    <label for="slutdato">Slut_Dato:</label>
+    <input type="date" id="slutdato" name="slutdato"><br>
+
+    <label for="lejer_id">Lejer_Id:</label>
+    <input type="number" id="lejer_id" name="lejer_id"><br>
+
+    <label for="afhentnings_adresse">Afhentningsadresse:</label>
+    <input type="number" id="afhentnings_adresse" name="afhentnings_adresse"><br>
+
+    <label for="afleverings_adresse">Afleveringsadresse:</label>
+    <input type="number" id="afleverings_adresse" name="afleverings_adresse"><br>
+
+    <label for="rapport_id">Rapport ID:</label>
+    <input type="number" id="rapport_id" name="rapport_id"><br>
+
+    <button type="submit">Opret kontrakt</button>
+    <button type="reset" onclick="return confirm('er du sikker på du vil reset?')">Reset</button>
+
+</form>
+
+<div class="search">
+    <form action="/soeg_kunde" method="get">
+        <label for="kunde">Søg_Kunde:</label>
+        <input type="search" id="kunde"><br>
+
+        <button type="submit">Søg</button>
+    </form>
+
+    <form class="/soeg_bil">
+        <label for="bil">Søg_Kunde:</label>
+        <input type="search" id="bil"><br>
+
+        <button type="submit">Søg</button>
+    </form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+.contain
+{
+    text-align: center;
+
+}
+
+/* Logo-styling */
+.logo
+{
+    max-width: 500px;
+    margin-bottom: 100px;
+}
+
+.search
+{
+    text-align: right;
+}

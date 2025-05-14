@@ -21,13 +21,18 @@ public class lejekontrakt {
     public lejekontrakt() {
     }
 
-    public lejekontrakt(int kontrakt_id, LocalDate startdato, LocalDate slutdato, int pris, int depositum, String valuta, int afhentnings_adresse, int afleverings_adresse, int vognnummer, int rapport_id, int lejer_id) {
+    public lejekontrakt(int kontrakt_id, LocalDate startdato, LocalDate slutdato, int pris, int depositum,
+                        String valuta, LocalDate oprettelsesdato, LocalDate betalingsdato,
+                        int afhentnings_adresse, int afleverings_adresse,
+                        int vognnummer, int rapport_id, int lejer_id) {
         this.kontrakt_id = kontrakt_id;
         this.startdato = startdato;
         this.slutdato = slutdato;
         this.pris = pris;
         this.depositum = depositum;
         this.valuta = valuta;
+        this.oprettelsesdato = oprettelsesdato;
+        this.betalingsdato = betalingsdato;
         this.afhentnings_adresse = afhentnings_adresse;
         this.afleverings_adresse = afleverings_adresse;
         this.vognnummer = vognnummer;
@@ -81,6 +86,22 @@ public class lejekontrakt {
 
     public void setValuta(String valuta) {
         this.valuta = valuta;
+    }
+
+    public LocalDate getOprettelsesdato() {
+        return oprettelsesdato;
+    }
+
+    public void setOprettelsesdato(LocalDate oprettelsesdato) {
+        this.oprettelsesdato = oprettelsesdato;
+    }
+
+    public LocalDate getBetalingsdato() {
+        return betalingsdato;
+    }
+
+    public void setBetalingsdato(LocalDate betalingsdato) {
+        this.betalingsdato = betalingsdato;
     }
 
     public int getAfhentnings_adresse() {

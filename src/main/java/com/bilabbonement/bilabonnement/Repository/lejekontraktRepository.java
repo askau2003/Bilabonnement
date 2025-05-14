@@ -19,4 +19,25 @@ public class lejekontraktRepository {
         RowMapper<lejekontrakt> rowMapper = new BeanPropertyRowMapper<>(lejekontrakt.class);
         return template.query(sql, rowMapper);
     }
+
+    public void insert(lejekontrakt kontrakt) {
+        String sql = "INSERT INTO lejekontrakt " +
+                "(startdato, slutdato, pris, depositum, valuta, oprettelsesdato, betalingsdato, afhentnings_adresse, afleverings_adresse, vognnummer, rapport_id, lejer_id) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        template.update(sql,
+                kontrakt.getStartdato(),
+                kontrakt.getSlutdato(),
+                kontrakt.getPris(),
+                kontrakt.getDepositum(),
+                kontrakt.getValuta(),
+                kontrakt.getOprettelsesdato(),
+                kontrakt.getBetalingsdato(),
+                kontrakt.getAfhentnings_adresse(),
+                kontrakt.getAfleverings_adresse(),
+                kontrakt.getVognnummer(),
+                kontrakt.getRapport_id(),
+                kontrakt.getLejer_id()
+        );
+    }
 }
