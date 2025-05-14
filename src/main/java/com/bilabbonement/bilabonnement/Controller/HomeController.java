@@ -125,7 +125,7 @@ public class HomeController {
         return "home/dashboard";
     }
 
-    // Viser bil-lager siden med alle biler
+    // Billager side
     @GetMapping("/billager")
     public String visBilLager(Model model) {
         model.addAttribute("biler", bilService.findAll());
