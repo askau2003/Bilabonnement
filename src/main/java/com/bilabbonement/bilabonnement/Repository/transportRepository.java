@@ -10,14 +10,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class transportRepository {
+public class TransportRepository {
     @Autowired
     JdbcTemplate template;
 
-    public List<transport> selectAll() {
-        String sql = "SELECT * FROM transport";
-        RowMapper<transport> rowMapper = new BeanPropertyRowMapper<>(transport.class);
-        return template.query(sql, rowMapper);
+    public Double gennemsnitligTransporttid() {
+        // tager gennemsnit af dage mellem lastbilen afhenter bilen og afleverer den.
+        String sql = "SELECT AVG(DATEDIFF(lastbil_afleverings_dato, lastbil_afhentnings_dato)) AS gennemsnitlig_transporttid" +
+                " FROM transport";
+        return template.queryForObject(sql,Double.class);
+        // queryForObject bruges når man kun får en enkelt værdi tilbage, nærmest lavet til AVG,SUM osv.
     }
-
 }
