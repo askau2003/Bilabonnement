@@ -3,6 +3,7 @@ package com.bilabbonement.bilabonnement.Controller;
 import com.bilabbonement.bilabonnement.Model.Bruger;
 import com.bilabbonement.bilabonnement.Model.Lejekontrakt;
 import com.bilabbonement.bilabonnement.Model.Status;
+import com.bilabbonement.bilabonnement.Model.OmsaetningMaaned;
 import com.bilabbonement.bilabonnement.Service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -115,8 +116,8 @@ public class HomeController {
         Double gennemsnitlig_transporttid = transportService.gennemsnitligTransporttid();
         model.addAttribute("gennemsnitlig_transporttid", gennemsnitlig_transporttid);
 
-        Double omsaetning_maaned = lejekontraktService.omsaetningMaaned();
-        model.addAttribute("omsaetning_maaned", omsaetning_maaned);
+        Double totalOmsaetning = lejekontraktService.omsaetningMaaned();
+        model.addAttribute("totalOmsaetning", totalOmsaetning);
 
         List<Status> statusList = bilService.antalIStatus();
         model.addAttribute("statusList", statusList);
