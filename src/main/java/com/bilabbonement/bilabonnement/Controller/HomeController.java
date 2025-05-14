@@ -124,4 +124,11 @@ public class HomeController {
 
         return "home/dashboard";
     }
+
+    // Viser bil-lager siden med alle biler
+    @GetMapping("/billager")
+    public String visBilLager(Model model) {
+        model.addAttribute("biler", bilService.findAll());
+        return "home/billager";
+    }
 }
