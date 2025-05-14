@@ -4,26 +4,21 @@
     <meta charset="UTF-8">
     <title>Bilabonnement Login</title>
     <style>
-        /* Centeret indholdet*/
-        body
-        {
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Fyld hele højden af vinduet */
+            height: 100vh;
             margin: 0;
-            background-color: #f9f9f9; /* Let baggrund, valgfrit */
+            background-color: #f9f9f9;
             font-family: Arial, sans-serif;
         }
 
-        /* Centrer alt i boksen og giv lidt afstand */
-        div
-        {
+        div {
             text-align: center;
         }
 
-        .logo
-        {
+        .logo {
             max-width: 500px;
             margin-bottom: 100px;
         }
@@ -37,15 +32,13 @@
     <!-- Login overskrift -->
     <h1>🔒 Log ind</h1>
 
+
     <!-- Login-formular -->
-    <form action ="logindhome" method="get">
-        <input type = "text" placeholder="Brugernavn" required>
-        <input type = "password" placeholder="Adgangskode" required> <!-- "password" Sørge for at ens kode ikke bliver vist -->
-        <input type = "submit" value = "Log Ind">
-        <input type = "submit" value = "Glemt adgangskode">
+    <form action="/logind" method="post">
+        <input type="text" name="brugernavn" placeholder="Brugernavn" required>
+        <input type="password" name="adgangskode" placeholder="Adgangskode" required>
+        <input type="submit" value="Log Ind">
     </form>
 </div>
-
-
 </body>
 </html>

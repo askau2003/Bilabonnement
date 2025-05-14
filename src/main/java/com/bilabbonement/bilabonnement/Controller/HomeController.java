@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
-
-
 import java.time.LocalDate;
 
 @Controller
@@ -22,9 +20,6 @@ public class HomeController
 {
     @Autowired
     private BrugerService brugerService;
-    @Autowired
-    private lejekontraktRepository repository;
-
     @GetMapping("/")
     public String index()
     {
@@ -46,7 +41,7 @@ public class HomeController
 
             // Tjekker hvilken rolle brugeren har, og sender videre til den rigtige side
             switch (bruger.getRolle().toLowerCase()) {
-                case "admin":
+                case "administrator":
                     return "redirect:/logindhome"; // sender admin-brugere til admin-siden
                 case "forretningsudvikler":
                     return "redirect:/forretninghome"; // sender forretningsudviklere til deres side
@@ -67,6 +62,8 @@ public class HomeController
         return "home/logindhome";
     }
 
+    @Autowired
+    private lejekontraktRepository repository;
 
     // side til og oprette kontrakt
     @GetMapping("/opretkontrakt")
@@ -87,5 +84,29 @@ public class HomeController
         model.addAttribute("kontrakt", kontrakt);// vis kontrakt på side vis nødvendigt
 
         return "home/kontraktoprettet";//vis at kontrakten er blevet oprettet
+    }
+
+    @GetMapping("/skadesrapporter")
+    public String visskaderapport()
+    {
+        return "home/skadesrapporter";
+    }
+
+    // Overfører attributes til View (html)
+    @GetMapping("/dashboard")
+    public String dashboard(Model model) {
+        Double gennemsnitlig_betalingstid = lejekontraktService.gennemsnitligBetalingstid();
+        model.addAttribute("gennemsnitlig_betalingstid",gennemsnitlig_betalingstid);
+
+        Double gennemsnitlig_transporttid = transportService.gennemsnitligTransporttid();
+        model.addAttribute("gennemsnitlig_transporttid",gennemsnitlig_transporttid);
+
+        Double omsaetning_maaned = lejekontraktService.omsaetningMaaned();
+        model.addAttribute("omsaetning_maaned",omsaetning_maaned);
+
+        List<status> statusList = bilService.antalIStatus();
+        model.addAttribute("statusList",statusList);
+
+        return "home/dashboard";
     }
 }
