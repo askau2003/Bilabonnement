@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login Screen</title>
+
+    <!-- Ekstern CSS til header -->
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+
+    <!-- Ekstern CSS til billed-menuen -->
+    <link rel="stylesheet" th:href="@{/css/logindhome.css}">
 </head>
 <body>
-<h1> Her skal der være header og andet lavet klar!!</h1>
+
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- Indhold (f.eks. overskrift til velkomst) -->
+<div class="indhold">
+    <h1>Du er logget ind som administrationsmedarbejder</h1>
+</div>
+
+<!-- Grid-menu med billeder -->
+<div class="grid-container">
+
+    <!-- Hver menu-item er en klikbar boks med billede og tekst -->
+    <a th:href="@{/Lejeaftaler}" class="menu-item">
+        <img src="/images/Lejeaftale.png" alt="Lejeaftaler"/>
+        <div>Lejeaftaler</div>
+    </a>
+
+    <a th:href="@{/skadesrapporter}" class="menu-item">
+        <img src="/images/Skadesrapport.png" alt="Skadesrapporter"/>
+        <div>Skadesrapporter</div>
+    </a>
+
+    <a th:href="@{/Bilstatus}" class="menu-item">
+        <img src="/images/bilensrejse.png" alt="Bilens Rejse"/>
+        <div>Bilens Rejse</div>
+    </a>
+
+    <a th:href="@{/Alarmer}" class="menu-item">
+        <img src="/images/alarmer.png" alt="Alarmer"/>
+        <div>Alarmer</div>
+    </a>
+
+    <a th:href="@{/Forhaandsaftaler}" class="menu-item">
+        <img src="/images/forhaand.png" alt="Forhåndsaftaler"/>
+        <div>Forhåndsaftaler</div>
+    </a>
+
+    <a th:href="@{/Udleveringer}" class="menu-item">
+        <img src="/images/udlevering.png" alt="Udlevering"/>
+        <div>Udlevering</div>
+    </a>
+
+    <a th:href="@{/Aflevering}" class="menu-item">
+        <img src="/images/afslutning.png" alt="Aflevering"/>
+        <div>Tilbagelevering</div>
+    </a>
+
+    <a th:href="@{/Lagerstatus}" class="menu-item">
+        <img src="/images/lagerstatus.png" alt="Lagerstatus"/>
+        <div>Lagerstatus</div>
+    </a>
+
+</div>
+
+<!-- Tilbage-knap nederst -->
+<div class="center">
+    <a th:href="@{/}" class="back-button">Tilbage</a>
+</div>
+
 </body>
 </html>

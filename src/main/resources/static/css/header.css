@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Fast venstrestillet header/menu */
+.side-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: ghostwhite;
+    color: royalblue;
+    padding: 20px;
+}
+
+.side-header h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.side-header ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-header ul li {
+    margin-bottom: 10px;
+}
+
+.side-header ul li a {
+    color: royalblue;
+    text-decoration: none;
+}
+
+.side-header ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Indholdet til højre for venstre-headeren */
+.indhold {
+    margin-left: 220px;
+    padding: 20px;
+}

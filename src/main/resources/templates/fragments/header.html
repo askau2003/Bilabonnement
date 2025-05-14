@@ -1,0 +1,22 @@
+<!-- fragments/header.html -->
+<div th:fragment="header" class="side-header">
+
+  <!-- Tilbage knap med billede -->
+  <a th:href="@{/logindhome}" class="Tilbage">
+    <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
+  </a>
+
+
+  <!-- Genveje -->
+  <h2>Menu</h2>
+  <ul>
+    <li><a href="/lejeaftaler">Lejeaftaler</a></li>
+    <li><a href="/skadesrapporter">Skadesrapporter</a></li>
+    <li><a href="/Bilens status">Bilens status</a></li>
+    <li><a href="/Alarmer">Alarmer</a></li>
+    <li><a href="/Forhånds aftaler">Forhånds aftaler</a></li>
+    <li><a href="/Udleveringer">Udleveringer</a></li>
+    <li><a href="/Afsluttet lejeaftaler">Afsluttet lejeaftaler</a></li>
+    <li><a href="/Lagerstatus">Lagerstatus</a></li>
+  </ul>
+</div>

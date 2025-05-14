@@ -1,0 +1,48 @@
+/* Layout for hele billed-menuen */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 kolonner */
+    gap: 20px;
+    padding-left: 240px;
+    justify-items: center;
+}
+
+/* Stil for hver boks med billede og tekst */
+.menu-item {
+    width: 150px;
+    height: 200px;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    color: black;
+}
+
+/* Hover-effekt for bokse */
+.menu-item:hover {
+    transform: scale(1.05);
+    background-color: #f0f0f0;
+}
+
+/* Tilpasning af billeder inde i boksene */
+.menu-item img {
+    width: 100%;
+    height: 130px;
+    object-fit: contain; /* Sørger for korrekt skalering */
+}
+
+/* Tilbage-knap */
+.back-button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: 2px solid black;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+}
+
+/* Centerer tilbage-knappen */
+.center {
+    text-align: center;
+}
