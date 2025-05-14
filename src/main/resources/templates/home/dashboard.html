@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        .dashboard {
+
+        }
+
+        .kasse {
+
+        }
+
+        .linje1 {
+            display: flex;
+            justify-content: space-evenly;
+            align-content: space-evenly;
+        }
+
+        .linje2 {
+            display: flex;
+            justify-content: space-evenly;
+            align-content: space-evenly;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="dashboard">
+
+    <div class="linje1">
+        <div class="kasse">
+            <h3>Gennemsnits Betalingstid mellem kontraktoprettelse og betalingsdato</h3>
+            <p><span th:text="${gennemsnitlig_betalingstid}"></span></p>
+        </div>
+        <div class="kasse">
+            <h3>Gennemsnits Transporttid for lastbilen</h3>
+            <p><span th:text="${gennemsnitlig_transporttid}"></span></p>
+        </div>
+        <div class="kasse">
+            <h3>Hvor hurtig udlejes de enkelte biler</h3>
+
+        </div>
+    </div>
+
+    <div class="linje2">
+        <div class="kasse">
+            <h3>Månedlig omsætning</h3>
+            <p><span th:text="${omsaetning_maaned}"></span></p>
+        </div>
+        <div class="kasse">
+            <h3>Graf med omsætning for året</h3>
+            <img src="/images/chart.png" alt="Graf over månedlig omsætning" class="graf">
+        </div>
+        <div class="kasse">
+            <h3>antal biler i hver status</h3>
+            <table>
+                <thead>
+                <tr>
+                    <th>Status</th>
+                    <th>Antal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="status : ${statusList}">
+                    <td th:text="${status.status}"></td>
+                    <td th:text="${status.antal}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
