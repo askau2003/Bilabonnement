@@ -104,7 +104,7 @@ public class HomeController
         Double omsaetning_maaned = lejekontraktService.omsaetningMaaned();
         model.addAttribute("omsaetning_maaned",omsaetning_maaned);
 
-        List<status> statusList = bilService.antalIStatus();
+        List<Status> statusList = bilService.antalIStatus();
         model.addAttribute("statusList",statusList);
 
         return "home/dashboard";
