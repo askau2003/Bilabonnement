@@ -1,6 +1,6 @@
 package com.bilabbonement.bilabonnement.Repository;
 
-import com.bilabbonement.bilabonnement.Model.lejekontrakt;
+import com.bilabbonement.bilabonnement.Model.Lejekontrakt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,17 +10,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class lejekontraktRepository {
+public class LejekontraktRepository {
     @Autowired
     JdbcTemplate template;
 
-    public List<lejekontrakt> selectAll() {
-        String sql = "SELECT * FROM lejekontrakt";
-        RowMapper<lejekontrakt> rowMapper = new BeanPropertyRowMapper<>(lejekontrakt.class);
-        return template.query(sql, rowMapper);
-    }
 
-    public void insert(lejekontrakt kontrakt) {
+    public void opretLejeKontrakt(Lejekontrakt kontrakt) {
         String sql = "INSERT INTO lejekontrakt " +
                 "(startdato, slutdato, pris, depositum, valuta, oprettelsesdato, betalingsdato, afhentnings_adresse, afleverings_adresse, vognnummer, rapport_id, lejer_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -40,6 +35,7 @@ public class lejekontraktRepository {
                 kontrakt.getLejer_id()
         );
     }
+
     public Double gennemsnitligBetalingstid() {
         // tager gennemsnittet af dage mellem betalingsdato og oprettelsesdato
         String sql = "SELECT AVG(DATEDIFF(betalingsdato, oprettelsesdato)) AS gennemsnitlig_betalingstid FROM lejekontrakt";

@@ -1,16 +1,16 @@
 package com.bilabbonement.bilabonnement.Model;
 
-public class adresse {
+public class Adresse {
 
     private int adresse_id;
     private String vej_navn;
     private int vej_nummer;
     private int postnummer;
 
-    public adresse() {
+    public Adresse() {
     }
 
-    public adresse(int adresse_id, String vej_navn, int vej_nummer, int postnummer) {
+    public Adresse(int adresse_id, String vej_navn, int vej_nummer, int postnummer) {
         this.adresse_id = adresse_id;
         this.vej_navn = vej_navn;
         this.vej_nummer = vej_nummer;

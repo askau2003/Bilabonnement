@@ -1,16 +1,16 @@
 package com.bilabbonement.bilabonnement.Model;
 
-public class skaderapport {
+public class Skaderapport {
 
     private int rapport_id;
     private String beskrivelse;
     private int pris;
     private int vognnummer;
 
-    public skaderapport() {
+    public Skaderapport() {
     }
 
-    public skaderapport(int rapport_id, String beskrivelse, int pris, int vognnummer) {
+    public Skaderapport(int rapport_id, String beskrivelse, int pris, int vognnummer) {
         this.rapport_id = rapport_id;
         this.beskrivelse = beskrivelse;
         this.pris = pris;

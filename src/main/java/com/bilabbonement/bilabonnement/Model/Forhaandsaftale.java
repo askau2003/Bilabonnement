@@ -1,6 +1,6 @@
 package com.bilabbonement.bilabonnement.Model;
 
-public class forhaandsaftale {
+public class Forhaandsaftale {
 
     private int aftale_id;
     private int pris;
@@ -9,10 +9,10 @@ public class forhaandsaftale {
     private int lejer_id;
     private int vognnummer;
 
-    public forhaandsaftale() {
+    public Forhaandsaftale() {
     }
 
-    public forhaandsaftale(int aftale_id, int pris, boolean betalt, int afhentnings_adresse, int lejer_id, int vognnummer) {
+    public Forhaandsaftale(int aftale_id, int pris, boolean betalt, int afhentnings_adresse, int lejer_id, int vognnummer) {
         this.aftale_id = aftale_id;
         this.pris = pris;
         this.betalt = betalt;

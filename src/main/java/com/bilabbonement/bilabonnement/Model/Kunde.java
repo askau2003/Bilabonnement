@@ -1,6 +1,6 @@
 package com.bilabbonement.bilabonnement.Model;
 
-public class kunde {
+public class Kunde {
 
     private int lejer_id;
     private String navn;
@@ -9,10 +9,10 @@ public class kunde {
     private int koerekortnummer;
     private int adresse_id;
 
-    public kunde() {
+    public Kunde() {
     }
 
-    public kunde(int lejer_id, String navn, String email, String cpr_nummer, int koerekortnummer, int adresse_id) {
+    public Kunde(int lejer_id, String navn, String email, String cpr_nummer, int koerekortnummer, int adresse_id) {
         this.lejer_id = lejer_id;
         this.navn = navn;
         this.email = email;

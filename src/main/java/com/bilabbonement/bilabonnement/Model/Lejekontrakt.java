@@ -2,7 +2,7 @@ package com.bilabbonement.bilabonnement.Model;
 
 import java.time.LocalDate;
 
-public class lejekontrakt {
+public class Lejekontrakt {
 
     private int kontrakt_id;
     private LocalDate startdato;
@@ -18,10 +18,10 @@ public class lejekontrakt {
     private int rapport_id;
     private int lejer_id;
 
-    public lejekontrakt() {
+    public Lejekontrakt() {
     }
 
-    public lejekontrakt(int kontrakt_id, LocalDate startdato, LocalDate slutdato, int pris, int depositum,
+    public Lejekontrakt(int kontrakt_id, LocalDate startdato, LocalDate slutdato, int pris, int depositum,
                         String valuta, LocalDate oprettelsesdato, LocalDate betalingsdato,
                         int afhentnings_adresse, int afleverings_adresse,
                         int vognnummer, int rapport_id, int lejer_id) {
