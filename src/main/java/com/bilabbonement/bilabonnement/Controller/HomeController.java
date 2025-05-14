@@ -22,6 +22,9 @@ public class HomeController
 {
     @Autowired
     private BrugerService brugerService;
+    @Autowired
+    private lejekontraktRepository repository;
+
     @GetMapping("/")
     public String index()
     {
@@ -64,8 +67,6 @@ public class HomeController
         return "home/logindhome";
     }
 
-    @Autowired
-    private lejekontraktRepository repository;
 
     // side til og oprette kontrakt
     @GetMapping("/opretkontrakt")
