@@ -1,27 +1,27 @@
 package com.bilabbonement.bilabonnement.Service;
 
-import com.bilabbonement.bilabonnement.Model.skaderapport;
-import com.bilabbonement.bilabonnement.Repository.skaderapportRepository;
+import com.bilabbonement.bilabonnement.Model.Skaderapport;
+import com.bilabbonement.bilabonnement.Repository.SkaderapportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class skaderapportService {
+public class SkaderapportService {
 
     @Autowired
-    private skaderapportRepository repository;
+    private SkaderapportRepository repository;
 
-    public List<skaderapport> hentAlleRapporter() {
+    public List<Skaderapport> hentAlleRapporter() {
         return repository.findAll();
     }
 
-    public void gemNyRapport(skaderapport rapport) {
+    public void gemNyRapport(Skaderapport rapport) {
         repository.save(rapport);
     }
 
-    public skaderapport hentRapportVedId(int id) {
+    public Skaderapport hentRapportVedId(int id) {
         return repository.findById(id);
     }
 
@@ -29,7 +29,7 @@ public class skaderapportService {
         repository.deleteById(id);
     }
 
-    public void opdaterRapport(skaderapport rapport) {
+    public void opdaterRapport(Skaderapport rapport) {
         repository.update(rapport);
     }
 }

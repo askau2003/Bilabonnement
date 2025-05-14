@@ -1,14 +1,14 @@
 package com.bilabbonement.bilabonnement.Model;
 
-public class bynavn {
+public class Bynavn {
 
     private int postnummer;
     private String bynavn;
 
-    public bynavn() {
+    public Bynavn() {
     }
 
-    public bynavn(int postnummer, String bynavn) {
+    public Bynavn(int postnummer, String bynavn) {
         this.postnummer = postnummer;
         this.bynavn = bynavn;
     }

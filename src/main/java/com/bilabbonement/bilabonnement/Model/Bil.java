@@ -1,6 +1,6 @@
 package com.bilabbonement.bilabonnement.Model;
 
-public class bil {
+public class Bil {
 
     private int vognnummer;
     private String stelnummer;
@@ -14,10 +14,10 @@ public class bil {
     private int odometer;
     private boolean automatgear;
 
-    public bil() {
+    public Bil() {
     }
 
-    public bil(int vognnummer, String stelnummer, String nummerplade, String maerke, String model, String braendstof, String farve, String status, boolean anhaengertraek, int odometer, boolean automatgear) {
+    public Bil(int vognnummer, String stelnummer, String nummerplade, String maerke, String model, String braendstof, String farve, String status, boolean anhaengertraek, int odometer, boolean automatgear) {
         this.vognnummer = vognnummer;
         this.stelnummer = stelnummer;
         this.nummerplade = nummerplade;

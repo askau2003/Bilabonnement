@@ -2,17 +2,17 @@ package com.bilabbonement.bilabonnement.Model;
 
 import java.time.LocalDate;
 
-public class transport {
+public class Transport {
 
     private int transport_id;
     private LocalDate lastbil_afhentnings_dato;
     private LocalDate lastbil_afleverings_dato;
     private int vognnummer;
 
-    public transport() {
+    public Transport() {
     }
 
-    public transport(int transport_id, LocalDate lastbil_afhentnings_dato, LocalDate lastbil_afleverings_dato, int vognnummer) {
+    public Transport(int transport_id, LocalDate lastbil_afhentnings_dato, LocalDate lastbil_afleverings_dato, int vognnummer) {
         this.transport_id = transport_id;
         this.lastbil_afhentnings_dato = lastbil_afhentnings_dato;
         this.lastbil_afleverings_dato = lastbil_afleverings_dato;

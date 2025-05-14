@@ -1,15 +1,15 @@
 package com.bilabbonement.bilabonnement.Model;
 
-public class bruger {
+public class Bruger {
 
     private String brugernavn;
     private String adgangskode;
     private String rolle;
 
-    public bruger() {
+    public Bruger() {
     }
 
-    public bruger(String brugernavn, String adgangskode, String rolle) {
+    public Bruger(String brugernavn, String adgangskode, String rolle) {
         this.brugernavn = brugernavn;
         this.adgangskode = adgangskode;
         this.rolle = rolle;
