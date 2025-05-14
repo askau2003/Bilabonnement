@@ -4,30 +4,32 @@ import java.time.LocalDate;
 
 public class lejekontrakt {
 
-    private int kontrakt_id;
-    private LocalDate startdato;
-    private LocalDate slutdato;
-    private int pris;
-    private int depositum;
-    private String valuta; // EURO, DKK
-    private LocalDate oprettelsesdato;
-    private LocalDate betalingsdato;
-    private int afhentnings_adresse;
-    private int afleverings_adresse;
-    private int vognnummer;
-    private int rapport_id;
-    private int lejer_id;
+        private int kontrakt_id;
+        private LocalDate startdato;
+        private LocalDate slutdato;
+        private int pris;
+        private int depositum;
+        private String valuta; // EURO, DKK
+        private LocalDate oprettelsesdato;
+        private LocalDate betalingsdato;
+        private int afhentnings_adresse;
+        private int afleverings_adresse;
+        private int vognnummer;
+        private int rapport_id;
+        private int lejer_id;
 
     public lejekontrakt() {
     }
 
-    public lejekontrakt(int kontrakt_id, LocalDate startdato, LocalDate slutdato, int pris, int depositum, String valuta, int afhentnings_adresse, int afleverings_adresse, int vognnummer, int rapport_id, int lejer_id) {
+    public lejekontrakt(int kontrakt_id, LocalDate startdato, LocalDate slutdato, int pris, int depositum, String valuta, LocalDate oprettelsesdato, LocalDate betalingsdato, int afhentnings_adresse, int afleverings_adresse, int vognnummer, int rapport_id, int lejer_id) {
         this.kontrakt_id = kontrakt_id;
         this.startdato = startdato;
         this.slutdato = slutdato;
         this.pris = pris;
         this.depositum = depositum;
         this.valuta = valuta;
+        this.oprettelsesdato = oprettelsesdato;
+        this.betalingsdato = betalingsdato;
         this.afhentnings_adresse = afhentnings_adresse;
         this.afleverings_adresse = afleverings_adresse;
         this.vognnummer = vognnummer;
