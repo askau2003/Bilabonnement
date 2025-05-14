@@ -15,7 +15,7 @@ public class bilRepository {
     JdbcTemplate template;
 
     public List<bil> selectAll() {
-        String sql = "SELECT * FROM transport";
+        String sql = "SELECT * FROM bil";
         RowMapper<bil> rowMapper = new BeanPropertyRowMapper<>(bil.class);
         return template.query(sql, rowMapper);
     }

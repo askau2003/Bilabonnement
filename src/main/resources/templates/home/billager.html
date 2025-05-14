@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Bil lager</title>
+    <title>Bil Lager</title>
 </head>
 <body>
+<h1>Bil Lager</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Vognnummer</th>
+        <th>Stelnummer</th>
+        <th>Nummerplade</th>
+        <th>Mærke</th>
+        <th>Model</th>
+        <th>Brændstof</th>
+        <th>Farve</th>
+        <th>Status</th>
+        <th>Anhængertræk</th>
+        <th>Odometer</th>
+        <th>Automatgear</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bil : ${biler}">
+        <td th:text="${bil.vognnummer}"></td>
+        <td th:text="${bil.stelnummer}"></td>
+        <td th:text="${bil.nummerplade}"></td>
+        <td th:text="${bil.maerke}"></td>
+        <td th:text="${bil.model}"></td>
+        <td th:text="${bil.braendstof}"></td>
+        <td th:text="${bil.farve}"></td>
+        <td th:text="${bil.status}"></td>
+        <td th:text="${bil.anhaengertraek} ? 'Ja' : 'Nej'"></td>
+        <td th:text="${bil.odometer}"></td>
+        <td th:text="${bil.automatgear} ? 'Ja' : 'Nej'"></td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

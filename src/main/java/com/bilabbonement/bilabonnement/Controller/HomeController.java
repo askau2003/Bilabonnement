@@ -7,12 +7,16 @@ import com.bilabbonement.bilabonnement.Service.BrugerService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
+import com.bilabbonement.bilabonnement.Model.bil;
+import java.util.List;
+
 
 
 import java.time.LocalDate;
@@ -20,6 +24,8 @@ import java.time.LocalDate;
 @Controller
 public class HomeController
 {
+    @Autowired
+    private com.bilabbonement.bilabonnement.Repository.bilRepository bilRepository;
     @Autowired
     private BrugerService brugerService;
     @Autowired
@@ -88,4 +94,12 @@ public class HomeController
 
         return "home/kontraktoprettet";//vis at kontrakten er blevet oprettet
     }
+
+    @GetMapping("/billager")
+    public String billager(Model model) {
+        List<bil> biler = bilRepository.selectAll();
+        model.addAttribute("biler", biler);
+        return "home/billager";
+    }
+
 }
