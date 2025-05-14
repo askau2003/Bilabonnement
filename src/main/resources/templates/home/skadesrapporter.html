@@ -5,7 +5,21 @@
     <title>Alle skadesrapporter</title>
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" href="/css/skadesrapport.css">
+<style>
+    /* Skjul piletaster i input[type="number"] i Chrome, Safari, Edge, Opera */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button
+    {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
+    /* Skjul piletaster i Firefox */
+    input[type=number]
+    {
+        -moz-appearance: textfield;
+    }
+</style>
 </head>
 <body>
 <!-- Genbrugt header -->
