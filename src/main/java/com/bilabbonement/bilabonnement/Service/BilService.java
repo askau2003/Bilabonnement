@@ -25,4 +25,13 @@ public class BilService {
     public List<Bil> reserveredeBiler() {
         return bilRepository.reserveredeBiler();
     }
+
+    public void opdaterBilStatus(int vognnummer, String nyStatus) {
+        bilRepository.opdaterBilStatus(vognnummer, nyStatus);
+    }
+
+    public List<Bil> findUdleveresBiler() {
+        return bilRepository.findUdleveresBiler();
+    }
+
 }

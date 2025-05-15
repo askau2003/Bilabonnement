@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biler til udlevering</title>
+</head>
+<body>
+<h1>Biler klar til udlevering</h1>
+
+<form method="post" th:action="@{/opdaterStatus}">
+    <table border="1">
+        <tr>
+            <th>Vognnummer</th>
+            <th>Mærke</th>
+            <th>Model</th>
+            <th>Nummerplade</th>
+            <th>Status</th>
+            <th>Udleveret?</th>
+        </tr>
+        <tr th:each="bil : ${bilList}">
+            <td th:text="${bil.vognnummer}"></td>
+            <td th:text="${bil.maerke}"></td>
+            <td th:text="${bil.model}"></td>
+            <td th:text="${bil.nummerplade}"></td>
+            <td th:text="${bil.status}"></td>
+            <td>
+                <input type="checkbox" th:name="udlejedeBiler"
+                       th:value="${bil.vognnummer}">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit">Opdater status til "Udlejet"</button>
+</form>
+
+</body>
+</html>

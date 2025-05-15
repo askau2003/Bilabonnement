@@ -145,4 +145,21 @@ public class HomeController {
         model.addAttribute("bilList",bilList);
         return "home/reserveredeBiler";
     }
+
+    @GetMapping("/udlevering")
+    public String visUdleveresBiler(Model model) {
+        List<Bil> bilList = bilService.findUdleveresBiler();
+        model.addAttribute("bilList", bilList);
+        return "home/udlevering";
+    }
+
+    @PostMapping("/opdaterStatus")
+    public String opdaterBilStatus(@RequestParam(value = "udlejedeBiler", required = false) List<Integer> udlejedeBiler) {
+        if (udlejedeBiler != null) {
+            for (int vognnummer : udlejedeBiler) {
+                bilService.opdaterBilStatus(vognnummer, "Udlejet");
+            }
+        }
+        return "redirect:/udlevering";
+    }
 }
