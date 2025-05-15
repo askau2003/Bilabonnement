@@ -32,7 +32,8 @@ public class BilRepository {
 
     public List<Bil> reserveredeBiler() {
         String sql = "SELECT vognnummer, stelnummer, nummerplade, maerke, model, status\n" +
-                "FROM bil";
+                "FROM bil\n" +
+                "Where status = 'Reserveret'";
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
         return template.query(sql,rowMapper);
     }

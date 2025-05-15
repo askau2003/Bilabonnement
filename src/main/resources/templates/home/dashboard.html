@@ -4,63 +4,59 @@
     <meta charset="UTF-8">
     <title>Dashboard</title>
     <style>
-        .dashboard {
-
-        }
-
         .kasse {
-            border: 1px solid black;
-            border-radius: 20px;
-            box-shadow: 2px 2px grey;
-            background-color: rgb(21, 146, 195);
-            width: 400px;
-            height: 350px;
-            margin: 25px;
-            padding: 10px;
+            border: 1px solid black; /* border */
+            border-radius: 20px; /* runde hjørner */
+            box-shadow: 2px 2px grey; /* skygge */
+            background-color: rgb(21, 146, 195); /* farve på kasser */
+            width: 400px; /* bredde på kasse */
+            height: 350px; /* højde på kasse */
+            margin: 25px; /* mellemrum rundt om kassen */
+            padding: 10px; /* mellemrum inde i kassen */
         }
 
         table {
-            border-collapse: collapse;
-            color: white;
-            text-align: center;
+            border-collapse: collapse; /* fjerner dobbeltstreger mellem celler i table */
+            color: white; /* tekst-farve */
+            text-align: center; /* centrer tekst */
         }
 
         th, td {
-            border: 1px solid black;
-            padding: 10px;
+            border: 1px solid black; /* border */
+            padding: 10px; /* mellemrum inde i celler */
         }
 
         p, h3 {
-            color: white;
-            text-align: center;
+            color: white; /* tekstfarve */
+            text-align: center; /* centrer tekst */
         }
 
         p {
-            font-size: 50px;
-            font-weight: bold;
+            font-size: 50px; /* størrelse på paragraf */
+            font-weight: bold; /* fed skrift */
         }
 
         h3 {
-            font-size: 25px;
-            font-weight: bold;
+            font-size: 25px; /* størrelse på h3 */
+            font-weight: bold; /* fed skrift */
         }
 
         .linje {
-            display: flex;
-            justify-content: space-evenly;
-            align-content: space-evenly;
-            flex-wrap: wrap;
+            display: flex; /* flexbox */
+            justify-content: space-evenly; /* lige meget plads mellem kasser horizontalt */
+            align-content: space-evenly; /* lige meget plads mellem kasser vertikalt */
+            flex-wrap: wrap; /* children går på næste linje hvis nødvendigt // Children = divs inde i divs */
         }
 
         .graf {
-            width: 100%;
-            object-fit: contain;
+            width: 100%; /* bredde på graf */
+            object-fit: contain; /* holder graf inde i kasse uden at ændre på aspect ratio */
         }
 
         .tabel {
-            display: flex;
-            justify-content: center;
-            align-content: center;
+            display: flex; /* flexbox */
+            justify-content: center; /* centrer horizontalt */
+            align-content: center; /* centrer vertikalt */
         }
     </style>
     <link rel="stylesheet" href="/css/header.css">

@@ -5,13 +5,25 @@
     <title>Reserverede biler</title>
     <style>
         table {
-            border-collapse: collapse;
-            text-align: center;
+            border-collapse: collapse; /* fjerner dobbeltstreger mellem celler i table */
+            text-align: center; /* centrer tekst i table */
+            width: 100%; /* sikrer at table fylder kun 100% */
         }
 
         th, td {
-            border: 1px solid black;
-            padding: 10px;
+            border: 1px solid black; /* border */
+            padding: 15px; /* tomt rum rundt om tekst */
+        }
+
+        .flex {
+            display: flex; /* flexbox */
+            justify-content: center; /* centrer horizontalt */
+            align-content: center; /* centrer vertikalt */
+            flex-wrap: wrap; /* children går på næste linje hvis nødvendigt // Children = divs inde i divs */
+        }
+
+        h1 {
+            margin-bottom: 20px; /* mellemrum mellem h1 og table */
         }
     </style>
     <link rel="stylesheet" href="/css/header.css">
@@ -21,29 +33,34 @@
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
 
-<div class="indhold">
-    <table>
-        <thead>
-        <tr>
-            <th>Vognnummer</th>
-            <th>Stelnummer</th>
-            <th>nummerplade</th>
-            <th>Mærke</th>
-            <th>Model</th>
-            <th>Status</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="bil : ${bilList}">
-            <td th:text="${bil.vognnummer}"></td>
-            <td th:text="${bil.stelnummer}"></td>
-            <td th:text="${bil.nummerplade}"></td>
-            <td th:text="${bil.maerke}"></td>
-            <td th:text="${bil.model}"></td>
-            <td th:text="${bil.status}"></td>
-        </tr>
-        </tbody>
-    </table>
+<div class="flex indhold">
+
+    <div class="indhold1">
+        <h1 style="text-align: center">Reserverede Biler</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Vognnummer</th>
+                <th>Stelnummer</th>
+                <th>Nummerplade</th>
+                <th>Mærke</th>
+                <th>Model</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bil : ${bilList}">
+                <td th:text="${bil.vognnummer}"></td>
+                <td th:text="${bil.stelnummer}"></td>
+                <td th:text="${bil.nummerplade}"></td>
+                <td th:text="${bil.maerke}"></td>
+                <td th:text="${bil.model}"></td>
+                <td th:text="${bil.status}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>
