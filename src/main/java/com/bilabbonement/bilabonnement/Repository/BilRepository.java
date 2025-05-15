@@ -37,4 +37,16 @@ public class BilRepository {
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
         return template.query(sql,rowMapper);
     }
+
+    public void opdaterBilStatus(int vognnummer, String nyStatus) {
+        String sql = "UPDATE bil SET status = ? WHERE vognnummer = ?";
+        template.update(sql, nyStatus, vognnummer);
+    }
+
+    public List<Bil> findUdleveresBiler() {
+        String sql = "SELECT * FROM bil WHERE status = 'Udleveres'";
+        RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
+        return template.query(sql, rowMapper);
+    }
+
 }

@@ -23,14 +23,16 @@ public class HomeController {
     private final LejekontraktService lejekontraktService;
     private final SkaderapportService skaderapportService;
     private final TransportService transportService;
+    private final ForhaandsaftaleService forhaandsaftaleService;
 
     @Autowired
-    public HomeController(BilService bilService, BrugerService brugerService, LejekontraktService lejekontraktService, SkaderapportService skaderapportService, TransportService transportService) {
+    public HomeController(BilService bilService, BrugerService brugerService, LejekontraktService lejekontraktService, SkaderapportService skaderapportService, TransportService transportService, ForhaandsaftaleService forhaandsaftaleService) {
         this.bilService = bilService;
         this.brugerService = brugerService;
         this.lejekontraktService = lejekontraktService;
         this.skaderapportService = skaderapportService;
         this.transportService = transportService;
+        this.forhaandsaftaleService = forhaandsaftaleService;
     }
 
 
@@ -94,7 +96,7 @@ public class HomeController {
 
         model.addAttribute("kontrakt", kontrakt);// vis kontrakt på side vis nødvendigt
 
-        return "home/kontraktoprettet";//vis at kontrakten er blevet oprettet
+        return "dataTilfoejet";//vis at kontrakten er blevet oprettet
     }
 
 
@@ -145,4 +147,39 @@ public class HomeController {
         model.addAttribute("bilList",bilList);
         return "home/reserveredeBiler";
     }
+
+    @GetMapping("/udlevering")
+    public String visUdleveresBiler(Model model) {
+        List<Bil> bilList = bilService.findUdleveresBiler();
+        model.addAttribute("bilList", bilList);
+        return "home/udlevering";
+    }
+
+    @PostMapping("/opdaterStatus")
+    public String opdaterBilStatus(@RequestParam(value = "udlejedeBiler", required = false) List<Integer> udlejedeBiler) {
+        if (udlejedeBiler != null) {
+            for (int vognnummer : udlejedeBiler) {
+                bilService.opdaterBilStatus(vognnummer, "Udlejet");
+            }
+        }
+        return "redirect:/udlevering";
+    }
+
+
+    @GetMapping("/opretForhaandsaftale")
+    public String opretForhaandsaftale() {
+        return "home/opretForhaandsaftale";
+    }
+
+    @PostMapping("opretForhaandsaftale")
+    public String opretForhaandsaftale(@ModelAttribute Forhaandsaftale forhaandsaftale) {
+        forhaandsaftaleService.opretForhaandsaftale(forhaandsaftale);
+        return "redirect:/dataTilfoejet";
+    }
+
+    @GetMapping("dataTilfoejet")
+    public String dataTilfoejet() {
+        return "home/dataTilfoejet";
+    }
+
 }
