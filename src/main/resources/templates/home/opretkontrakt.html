@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <title>Opretkontrakt</title>
     <link rel="stylesheet" href="/css/lejeaftale.css">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
         </head>
 <body>
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
 <div class="contain">
-    <div class="logo">
-<img src="images/BILABONNEMENT_logo.png" alt="BilAbonnement Logo" class="logo"><br>
 
         <!--Actions til og oprette en kontrakt-->
-    </div>
 <form action="/opretkontrakt" method="post">
     <label for="pris">Pris:</label>
     <input type="number" id="pris" name="pris"><br>
@@ -60,7 +60,7 @@
     </form>
 
     <form class="/soeg_bil">
-        <label for="bil">Søg_Kunde:</label>
+        <label for="bil">Søg_Bil:</label>
         <input type="search" id="bil"><br>
 
         <button type="submit">Søg</button>
