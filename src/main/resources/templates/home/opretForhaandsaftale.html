@@ -3,8 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Opret Forhåndsaftale</title>
+
+    <style>
+        form {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flex {
+            flex-direction: row;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
+
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="indhold">
+
+    <h1 style="text-align: center">Opret Forhåndsaftale</h1>
+
+    <form action="/opretForhaandsaftale" method="post">
+
+        <div class="flex">
+            <label for="pris">Pris:</label>
+            <input type="number" id="pris" name="pris" required>
+        </div>
+
+        <div class="flex">
+            <label for="betalt">Er Betalt:</label>
+            <input type="checkbox" id="betalt" name="betalt" required>
+        </div>
+
+        <div class="flex">
+            <label for="afhentnings_adresse">Afhentnings adresse:</label>
+            <input type="number" id="afhentnings_adresse" name="afhentnings_adresse" required>
+        </div>
+
+        <div class="flex">
+            <label for="lejer_id">LejerID:</label>
+            <input type="number" id="lejer_id" name="lejer_id" required>
+        </div>
+
+        <div class="flex">
+            <label for="vognnummer">Vognnummer:</label>
+            <input type="number" id="vognnummer" name="vognnummer" required>
+        </div>
+
+        <div class="flex">
+            <button type="submit">Tilføj Aftale</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+
+
+</div>
 
 </body>
 </html>
