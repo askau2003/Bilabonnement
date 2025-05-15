@@ -21,4 +21,8 @@ public class BilService {
     public List<Status> antalIStatus() {
         return bilRepository.antalIStatus();
     }
+
+    public List<Bil> reserveredeBiler() {
+        return bilRepository.reserveredeBiler();
+    }
 }

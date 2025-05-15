@@ -138,4 +138,11 @@ public class HomeController {
         model.addAttribute("biler", bilService.findAll());
         return "home/billager";
     }
+
+    @GetMapping("/reserveredeBiler")
+    public String reserveredeBiler(Model model) {
+        List<Bil> bilList = bilService.reserveredeBiler();
+        model.addAttribute("bilList",bilList);
+        return "home/reserveredeBiler";
+    }
 }

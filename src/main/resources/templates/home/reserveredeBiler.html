@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserverede biler</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="indhold">
+    <table>
+        <thead>
+        <tr>
+            <th>Vognnummer</th>
+            <th>Stelnummer</th>
+            <th>nummerplade</th>
+            <th>Mærke</th>
+            <th>Model</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bil : ${bilList}">
+            <td th:text="${bil.vognnummer}"></td>
+            <td th:text="${bil.stelnummer}"></td>
+            <td th:text="${bil.nummerplade}"></td>
+            <td th:text="${bil.maerke}"></td>
+            <td th:text="${bil.model}"></td>
+            <td th:text="${bil.status}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
