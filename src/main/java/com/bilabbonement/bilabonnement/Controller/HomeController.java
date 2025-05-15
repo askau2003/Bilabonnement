@@ -133,9 +133,9 @@ public class HomeController {
     }
 
     // Billager side
-    @GetMapping("/billager")
+    @GetMapping("/lagerstatus")
     public String visBilLager(Model model) {
         model.addAttribute("biler", bilService.findAll());
-        return "home/billager";
+        return "home/lagerstatus";
     }
 }
