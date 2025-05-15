@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data tilføjet</title>
+    <style>
+        .indhold {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="indhold">
+    <h1>Dataen er tilføjet til databasen.</h1>
+
+    <form action="/logindhome">
+        <button type="submit">Tilbage</button>
+    </form>
+</div>
+</body>
+</html>
