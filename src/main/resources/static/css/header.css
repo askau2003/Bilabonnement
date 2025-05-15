@@ -11,7 +11,7 @@ body {
     width: 200px;
     height: 100vh;
     background-color: ghostwhite;
-    color: royalblue;
+    color: rgb(21, 146, 195);
     padding: 20px;
 }
 
@@ -30,7 +30,7 @@ body {
 }
 
 .side-header ul li a {
-    color: royalblue;
+    color: rgb(21, 146, 195);
     text-decoration: none;
 }
 

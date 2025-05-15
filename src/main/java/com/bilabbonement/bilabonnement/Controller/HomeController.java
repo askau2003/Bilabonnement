@@ -1,9 +1,6 @@
 package com.bilabbonement.bilabonnement.Controller;
 
-import com.bilabbonement.bilabonnement.Model.Bruger;
-import com.bilabbonement.bilabonnement.Model.Lejekontrakt;
-import com.bilabbonement.bilabonnement.Model.Status;
-import com.bilabbonement.bilabonnement.Model.OmsaetningMaaned;
+import com.bilabbonement.bilabonnement.Model.*;
 import com.bilabbonement.bilabonnement.Service.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -101,9 +98,19 @@ public class HomeController {
     }
 
 
+    // Viser formularen til at oprette en skadesrapport
+
     @GetMapping("/skadesrapporter")
-    public String visskaderapport() {
-        return "home/skadesrapporter";
+    public String visAlleRapporter(Model model) {
+        model.addAttribute("rapporter", skaderapportService.hentAlleRapporter());
+        return "home/skadesrapporter"; // <- du skal have en HTML med dette navn
+    }
+
+    // Håndterer form submission og gemmer skadesrapporten
+     @PostMapping("/skadesrapport")
+    public String gemSkadesrapport(@ModelAttribute Skaderapport skadesrapport) {
+        skaderapportService.gemNyRapport(skadesrapport);
+        return "redirect:/skadesrapporter";
     }
 
 
