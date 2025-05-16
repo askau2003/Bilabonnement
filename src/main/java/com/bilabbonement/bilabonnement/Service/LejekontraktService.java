@@ -40,6 +40,27 @@ public class LejekontraktService {
         return totalOmsaetning;
     }
 
+    public Double omsaetningMaanedTest(List<OmsaetningMaaned> omsaetningList) {
+
+        // ny variabel
+        Double totalOmsaetning = 0.0;
+
+        // kører listen igennem
+        for (OmsaetningMaaned omsaetning : omsaetningList) {
+            //hvis valuta er euro skal omsætningen ganges med 7,5 for at få det i DKK derefter ligges oven i variabel
+            if ("EURO".equals(omsaetning.getValuta())) {
+                totalOmsaetning += omsaetning.getOmsaetning() * 7.5;
+            }
+            // hvis valuta er DKK skal omsætningen bare ligges oven i variabel
+            if ("DKK".equals(omsaetning.getValuta())) {
+                totalOmsaetning += omsaetning.getOmsaetning();
+            }
+        }
+
+        // returnerer omsætningen
+        return totalOmsaetning;
+    }
+
     public void opretLejeKontrakt(Lejekontrakt kontrakt) {
         lejekontraktRepository.opretLejeKontrakt(kontrakt);
     }
