@@ -1,6 +1,7 @@
 package com.bilabbonement.bilabonnement.Service;
 
 import com.bilabbonement.bilabonnement.Model.Bil;
+import com.bilabbonement.bilabonnement.Model.BilUdlejningStatistik;
 import com.bilabbonement.bilabonnement.Model.Status;
 import com.bilabbonement.bilabonnement.Repository.BilRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class BilService {
     public List<Bil> selectVognnummer() {
         return bilRepository.selectVognnummer();
     }
-    public List<Bil> findUdlejedeBiler() {
-        return bilRepository.findUdlejedeBiler();
+    public List<BilUdlejningStatistik> findAntalUdlejningerPrBil() {
+        return bilRepository.findAntalUdlejningerPrBil();
     }
 }

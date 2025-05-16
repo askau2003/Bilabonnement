@@ -78,9 +78,9 @@ public class HomeController {
 
     @GetMapping("/forretninghome")
     public String visUdlejedeBiler(Model model) {
-        List<Bil> bilList = bilService.findUdlejedeBiler();
-        model.addAttribute("bilList", bilList);
-        return "home/forretninghome"; // HTML-visning til udlejede biler
+        List<BilUdlejningStatistik> statistikList = bilService.findAntalUdlejningerPrBil();
+        model.addAttribute("statistik", statistikList);
+        return "home/forretninghome";
     }
 
    /* @GetMapping("/forretninghome")

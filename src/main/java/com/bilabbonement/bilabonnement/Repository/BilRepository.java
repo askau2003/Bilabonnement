@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import com.bilabbonement.bilabonnement.Model.Bil;
+import com.bilabbonement.bilabonnement.Model.BilUdlejningStatistik;
 
 import java.util.List;
 
@@ -55,9 +56,16 @@ public class BilRepository {
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
         return template.query(sql, rowMapper);
     }
+    public List<BilUdlejningStatistik> findAntalUdlejningerPrBil()
+    {
+        String sql = "SELECT b.vognnummer, b.maerke, b.model, b.nummerplade, " +
+                "COUNT(l.kontrakt_id) AS antalUdlejninger " +
+                "FROM bil b " +
+                "LEFT JOIN lejekontrakt l ON b.vognnummer = l.vognnummer " +
+                "GROUP BY b.vognnummer, b.maerke, b.model, b.nummerplade " +
+                "ORDER BY antalUdlejninger DESC";
 
-    public List<Bil> findUdlejedeBiler() {
-        String sql = "SELECT * FROM bil WHERE status = 'Udlejet'";
-        return template.query(sql, new BeanPropertyRowMapper<>(Bil.class));
+        RowMapper<BilUdlejningStatistik> rowMapper = new BeanPropertyRowMapper<>(BilUdlejningStatistik.class);
+        return template.query(sql, rowMapper);
     }
 }
