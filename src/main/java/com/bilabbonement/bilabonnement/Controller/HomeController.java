@@ -24,15 +24,21 @@ public class HomeController {
     private final SkaderapportService skaderapportService;
     private final TransportService transportService;
     private final ForhaandsaftaleService forhaandsaftaleService;
+    private final AdresseService adresseService;
+    private final KundeService kundeService;
 
     @Autowired
-    public HomeController(BilService bilService, BrugerService brugerService, LejekontraktService lejekontraktService, SkaderapportService skaderapportService, TransportService transportService, ForhaandsaftaleService forhaandsaftaleService) {
+    public HomeController(BilService bilService, BrugerService brugerService, LejekontraktService lejekontraktService,
+                          SkaderapportService skaderapportService, TransportService transportService,
+                          ForhaandsaftaleService forhaandsaftaleService, AdresseService adresseService, KundeService kundeService) {
         this.bilService = bilService;
         this.brugerService = brugerService;
         this.lejekontraktService = lejekontraktService;
         this.skaderapportService = skaderapportService;
         this.transportService = transportService;
         this.forhaandsaftaleService = forhaandsaftaleService;
+        this.adresseService = adresseService;
+        this.kundeService = kundeService;
     }
 
 
@@ -102,7 +108,7 @@ public class HomeController {
 
         model.addAttribute("kontrakt", kontrakt);// vis kontrakt på side vis nødvendigt
 
-        return "dataTilfoejet";//vis at kontrakten er blevet oprettet
+        return "redirect:/dataTilfoejet";//vis at kontrakten er blevet oprettet
     }
 
 
@@ -178,9 +184,19 @@ public class HomeController {
     }
 
     @PostMapping("opretForhaandsaftale")
-    public String opretForhaandsaftale(@ModelAttribute Forhaandsaftale forhaandsaftale) {
+    public String opretForhaandsaftale(@ModelAttribute Forhaandsaftale forhaandsaftale, Model model) {
         forhaandsaftaleService.opretForhaandsaftale(forhaandsaftale);
-        return "redirect:/dataTilfoejet";
+
+        List<Adresse> adresseList = adresseService.selectAll();
+        model.addAttribute("adresseList",adresseList);
+
+        List<Bil> bilList = bilService.selectVognnummer();
+        model.addAttribute("bilList",bilList);
+
+        List<Kunde> kundeList = kundeService.selectLejerID();
+        model.addAttribute("kundeList",kundeList);
+
+        return "redirect:/dataTilfoejet"; // godkendelses side
     }
 
     @GetMapping("dataTilfoejet")
