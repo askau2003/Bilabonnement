@@ -1,15 +1,38 @@
 <!-- fragments/header.html -->
 <div th:fragment="header" class="side-header">
 
-  <!-- Tilbage knap med billede -->
-  <a th:href="@{/logindhome}" class="Tilbage">
+  <!-- Logo med tilbage-knap -->
+  <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}"
+     th:href="@{/forretninghome}" class="Tilbage">
     <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
   </a>
 
+  <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrator'}"
+     th:href="@{/logindhome}" class="Tilbage">
+    <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
+  </a>
 
-  <!-- Genveje -->
-  <h2><a href="/logindhome">Menu</a></h2>
-  <ul>
+  <!-- Menutitel -->
+  <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}">
+    <a href="/forretninghome">Menu</a>
+  </h2>
+
+  <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrator'}">
+    <a href="/logindhome">Menu</a>
+  </h2>
+
+  <!-- Forretningsudvikler-menu -->
+  <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/reserveredeBiler">Reserverede Biler</a></li>
+    <li><a href="/skadesrapporter">Skadesrapporter</a></li>
+    <li><a href="/Bilens status">Bilens status</a></li>
+    <li><a href="/Afsluttet lejeaftaler">Afsluttet lejeaftaler</a></li>
+    <li><a href="/lagerstatus">Lagerstatus</a></li>
+  </ul>
+
+  <!-- Administrator-menu -->
+  <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrator'}">
     <li><a href="/dashboard">Dashboard</a></li>
     <li><a href="/reserveredeBiler">Reserverede Biler</a></li>
     <li><a href="/opretkontrakt">Lejekontrakt</a></li>
@@ -21,4 +44,5 @@
     <li><a href="/Afsluttet lejeaftaler">Afsluttet lejeaftaler</a></li>
     <li><a href="/lagerstatus">Lagerstatus</a></li>
   </ul>
+
 </div>
