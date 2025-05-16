@@ -83,13 +83,6 @@ public class HomeController {
         return "home/forretninghome";
     }
 
-   /* @GetMapping("/forretninghome")
-    public String showForretningHome(Model model)
-    {
-        List<Bil> bilList = bilService.findAll();
-        model.addAttribute("biler", bilList);
-        return "home/forretninghome";
-    }*/
 
     @GetMapping("/logindhome")
     public String showLogindHome() {
