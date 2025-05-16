@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/table.css">
     <!-- Ekstern CSS til header -->
     <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
@@ -10,5 +11,28 @@
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
 <h1>hhhh</h1>
+
+<h2>Biler der er udlejet</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Mærke</th>
+        <th>Model</th>
+        <th>Farve</th>
+        <th>Gear</th>
+        <th>Brændstof</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bil : ${bilList}">
+        <td th:text="${bil.maerke}">Mærke</td>
+        <td th:text="${bil.model}">Model</td>
+        <td th:text="${bil.farve}">Farve</td>
+        <td th:text="${bil.automatgear} ? 'Automat' : 'Manuel'">Gear</td>
+        <td th:text="${bil.braendstof}">Brændstof</td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

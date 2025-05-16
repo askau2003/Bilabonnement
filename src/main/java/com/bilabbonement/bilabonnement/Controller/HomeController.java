@@ -77,11 +77,19 @@ public class HomeController {
     }
 
     @GetMapping("/forretninghome")
-
-    public String showForretningHome()
-    {
-        return "home/forretninghome";
+    public String visUdlejedeBiler(Model model) {
+        List<Bil> bilList = bilService.findUdlejedeBiler();
+        model.addAttribute("bilList", bilList);
+        return "home/forretninghome"; // HTML-visning til udlejede biler
     }
+
+   /* @GetMapping("/forretninghome")
+    public String showForretningHome(Model model)
+    {
+        List<Bil> bilList = bilService.findAll();
+        model.addAttribute("biler", bilList);
+        return "home/forretninghome";
+    }*/
 
     @GetMapping("/logindhome")
     public String showLogindHome() {
