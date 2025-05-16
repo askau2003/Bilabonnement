@@ -70,6 +70,12 @@ public class HomeController {
         }
     }
 
+    @GetMapping("/forretninghome")
+
+    public String showForretningHome()
+    {
+        return "home/forretninghome";
+    }
 
     @GetMapping("/logindhome")
     public String showLogindHome() {
