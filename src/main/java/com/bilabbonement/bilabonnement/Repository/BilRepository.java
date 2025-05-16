@@ -49,4 +49,10 @@ public class BilRepository {
         return template.query(sql, rowMapper);
     }
 
+    public List<Bil> selectVognnummer() {
+        String sql = "SELECT vognnummer, stelnummer, nummerplade, maerke, model\n" +
+                "FROM bil";
+        RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
+        return template.query(sql, rowMapper);
+    }
 }

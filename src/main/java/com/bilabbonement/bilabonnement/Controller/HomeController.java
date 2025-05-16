@@ -179,14 +179,7 @@ public class HomeController {
 
 
     @GetMapping("/opretForhaandsaftale")
-    public String opretForhaandsaftale() {
-        return "home/opretForhaandsaftale";
-    }
-
-    @PostMapping("opretForhaandsaftale")
-    public String opretForhaandsaftale(@ModelAttribute Forhaandsaftale forhaandsaftale, Model model) {
-        forhaandsaftaleService.opretForhaandsaftale(forhaandsaftale);
-
+    public String opretForhaandsaftale(Model model) {
         List<Adresse> adresseList = adresseService.selectAll();
         model.addAttribute("adresseList",adresseList);
 
@@ -195,7 +188,12 @@ public class HomeController {
 
         List<Kunde> kundeList = kundeService.selectLejerID();
         model.addAttribute("kundeList",kundeList);
+        return "home/opretForhaandsaftale";
+    }
 
+    @PostMapping("/opretForhaandsaftale")
+    public String opretForhaandsaftale(@ModelAttribute Forhaandsaftale forhaandsaftale) {
+        forhaandsaftaleService.opretForhaandsaftale(forhaandsaftale);
         return "redirect:/dataTilfoejet"; // godkendelses side
     }
 

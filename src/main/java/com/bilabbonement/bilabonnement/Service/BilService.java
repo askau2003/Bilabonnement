@@ -34,4 +34,7 @@ public class BilService {
         return bilRepository.findUdleveresBiler();
     }
 
+    public List<Bil> selectVognnummer() {
+        return bilRepository.selectVognnummer();
+    }
 }

@@ -65,7 +65,62 @@
         </div>
     </form>
 
-
+    <div class="tabel">
+        <table>
+            <thead>
+            <tr>
+                <th>Adresse ID</th>
+                <th>Vejnavn</th>
+                <th>Vejnummer</th>
+                <th>Postnummer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="adresse : ${adresseList}">
+                <td th:text="${adresse.adresse_id}"></td>
+                <td th:text="${adresse.vej_navn}"></td>
+                <td th:text="${adresse.vej_nummer}"></td>
+                <td th:text="${adresse.postnummer}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Lejer ID</th>
+                <th>Navn</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="kunde : ${kundeList}">
+                <td th:text="${kunde.lejer_id}"></td>
+                <td th:text="${kunde.navn}"></td>
+                <td th:text="${kunde.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Vognnummer</th>
+                <th>Stelnummer</th>
+                <th>Nummerplade</th>
+                <th>Mærke</th>
+                <th>Model</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bil : ${bilList}">
+                <td th:text="${bil.vognnummer}"></td>
+                <td th:text="${bil.stelnummer}"></td>
+                <td th:text="${bil.nummerplade}"></td>
+                <td th:text="${bil.maerke}"></td>
+                <td th:text="${bil.model}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>
