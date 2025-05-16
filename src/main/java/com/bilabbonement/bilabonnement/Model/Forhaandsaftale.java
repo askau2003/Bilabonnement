@@ -4,7 +4,7 @@ public class Forhaandsaftale {
 
     private int aftale_id;
     private int pris;
-    private boolean betalt;
+    private Boolean betalt;
     private int afhentnings_adresse;
     private int lejer_id;
     private int vognnummer;
@@ -12,7 +12,7 @@ public class Forhaandsaftale {
     public Forhaandsaftale() {
     }
 
-    public Forhaandsaftale(int aftale_id, int pris, boolean betalt, int afhentnings_adresse, int lejer_id, int vognnummer) {
+    public Forhaandsaftale(int aftale_id, int pris, Boolean betalt, int afhentnings_adresse, int lejer_id, int vognnummer) {
         this.aftale_id = aftale_id;
         this.pris = pris;
         this.betalt = betalt;
@@ -37,11 +37,11 @@ public class Forhaandsaftale {
         this.pris = pris;
     }
 
-    public boolean isBetalt() {
+    public Boolean isBetalt() {
         return betalt;
     }
 
-    public void setBetalt(boolean betalt) {
+    public void setBetalt(Boolean betalt) {
         this.betalt = betalt;
     }
 

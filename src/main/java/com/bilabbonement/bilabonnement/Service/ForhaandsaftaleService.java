@@ -12,6 +12,9 @@ public class ForhaandsaftaleService {
     ForhaandsaftaleRepository forhaandsaftaleRepository;
 
     public void opretForhaandsaftale(Forhaandsaftale forhaandsaftale) {
+        if(forhaandsaftale.isBetalt() == null) {
+            forhaandsaftale.setBetalt(false);
+        }
         forhaandsaftaleRepository.opretForhaandsaftale(forhaandsaftale);
     }
 }
