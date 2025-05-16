@@ -42,3 +42,9 @@ h1 {
     font-size: 2rem;
     margin-top: 40px;
 }
+
+textarea {
+    width: 25%;
+    height: 100px;
+    resize: none; /* brugeren kan ikke ændre størrelse */
+}
