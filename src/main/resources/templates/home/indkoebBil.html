@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Indkøb Biler</title>
     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/table.css">
+
 
     <style>
         .kasse {
@@ -17,20 +19,6 @@
             padding: 10px; /* mellemrum inde i kassen */
         }
 
-        p, h3 {
-            color: white; /* tekstfarve */
-            text-align: center; /* centrer tekst */
-        }
-
-        p {
-            font-size: 50px; /* størrelse på paragraf */
-            font-weight: bold; /* fed skrift */
-        }
-
-        h3 {
-            font-size: 25px; /* størrelse på h3 */
-            font-weight: bold; /* fed skrift */
-        }
 
         .linje {
             display: flex; /* flexbox */
@@ -38,8 +26,12 @@
             align-content: space-evenly; /* lige meget plads mellem kasser vertikalt */
             flex-wrap: wrap; /* children går på næste linje hvis nødvendigt // Children = divs inde i divs */
         }
-    </style>
 
+        .bilbillede {
+            width: 100%; /* bredde på graf */
+            object-fit: contain; /* holder graf inde i kasse uden at ændre på aspect ratio */
+        }
+    </style>
 </head>
 <body>
 
@@ -50,16 +42,166 @@
 
     <div class="linje">
         <div class="kasse">
+            <img src="/images/bil1.png" alt="Porsche 911 Carrera 4" class="bilbillede">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mærke</th>
+                    <th>Model</th>
+                    <th>Årgang</th>
+                    <th>Udstyrniveau</th>
+                    <th>Reg. Afgift</th>
+                    <th>CO2-udledning</th>
+                    <th>Pris</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Porsche</td>
+                    <td>911 Carrera 4</td>
+                    <td>2017</td>
+                    <td>Fuldt udstyr</td>
+                    <td>Betalt</td>
+                    <td>176 g/km</td>
+                    <td>1.599.000 kr</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="kasse">
+            <img src="/images/bil2.png" alt="Tesla Model 3" class="bilbillede">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mærke</th>
+                    <th>Model</th>
+                    <th>Årgang</th>
+                    <th>Udstyrniveau</th>
+                    <th>Reg. Afgift</th>
+                    <th>CO2-udledning</th>
+                    <th>Pris</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Tesla</td>
+                    <td>Model 3</td>
+                    <td>2022</td>
+                    <td>Fuldt udstyr</td>
+                    <td>Betalt</td>
+                    <td>90 g/km</td>
+                    <td>263.400 kr</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="kasse">
+            <img src="/images/bil3.png" alt="Volkswagen Golf Sportsvan" class="bilbillede">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mærke</th>
+                    <th>Model</th>
+                    <th>Årgang</th>
+                    <th>Udstyrniveau</th>
+                    <th>Reg. Afgift</th>
+                    <th>CO2-udledning</th>
+                    <th>Pris</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Volkswagen</td>
+                    <td>Golf Sportsvan</td>
+                    <td>2019</td>
+                    <td>Halvt udstyr</td>
+                    <td>Betalt</td>
+                    <td>101 g/km</td>
+                    <td>149.500 kr</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="kasse">
+            <img src="/images/bil4.png" alt="Ferrari F355" class="bilbillede">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mærke</th>
+                    <th>Model</th>
+                    <th>Årgang</th>
+                    <th>Udstyrniveau</th>
+                    <th>Reg. Afgift</th>
+                    <th>CO2-udledning</th>
+                    <th>Pris</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Ferrari</td>
+                    <td>F355</td>
+                    <td>1999</td>
+                    <td>Fuldt udstyr</td>
+                    <td>Betalt</td>
+                    <td>354 g/km</td>
+                    <td>749.900 kr</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="kasse">
+            <img src="/images/bil5.png" alt="Toyota GR Yaris" class="bilbillede">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mærke</th>
+                    <th>Model</th>
+                    <th>Årgang</th>
+                    <th>Udstyrniveau</th>
+                    <th>Reg. Afgift</th>
+                    <th>CO2-udledning</th>
+                    <th>Pris</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Toyota</td>
+                    <td>GR Yaris</td>
+                    <td>2024</td>
+                    <td>Fuldt udstyr</td>
+                    <td>Ikke Betalt</td>
+                    <td>198 g/km</td>
+                    <td>894.000 kr</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="kasse">
+            <img src="/images/bil6.png" alt="Mercedes Maybach G650" class="bilbillede">
+            <table>
+                <thead>
+                <tr>
+                    <th>Mærke</th>
+                    <th>Model</th>
+                    <th>Årgang</th>
+                    <th>Udstyrniveau</th>
+                    <th>Reg. Afgift</th>
+                    <th>CO2-udledning</th>
+                    <th>Pris</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Mercedes</td>
+                    <td>Maybach G650</td>
+                    <td>2018</td>
+                    <td>Fuldt udstyr</td>
+                    <td>Ikke Betalt</td>
+                    <td>328 g/km</td>
+                    <td>4.999.000 kr</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
