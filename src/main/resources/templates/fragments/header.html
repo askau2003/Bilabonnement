@@ -12,6 +12,11 @@
     <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
   </a>
 
+  <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'superadmin'}"
+     th:href="@{/superadminhome}" class="Tilbage">
+    <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
+  </a>
+
   <!-- Menutitel -->
   <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}">
     <a href="/forretninghome">Menu</a>
@@ -19,6 +24,10 @@
 
   <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrator'}">
     <a href="/logindhome">Menu</a>
+  </h2>
+
+  <h2 th:if="${session.bruger !=null and session.bruger.rolle.toLowerCase() == 'superadmin'}">
+    <a href="/superadminhome">Menu</a>
   </h2>
 
   <!-- Forretningsudvikler-menu -->
@@ -45,6 +54,23 @@
     <li><a href="/Udleveringer">Udleveringer</a></li>
     <li><a href="/Afsluttet lejeaftaler">Afsluttet lejeaftaler</a></li>
     <li><a href="/lagerstatus">Lagerstatus</a></li>
+  </ul>
+
+  <!-- Superadmin-menu -->
+  <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'superadmin'}">
+    <li><a href="/dashboard">Dashboard</a></li>
+    <li><a href="/reserveredeBiler">Reserverede Biler</a></li>
+    <li><a href="/skadesrapporter">Skadesrapporter</a></li>
+    <li><a href="/Bilens status">Bilens status</a></li>
+    <li><a href="/Afsluttet lejeaftaler">Afsluttet lejeaftaler</a></li>
+    <li><a href="/lagerstatus">Lagerstatus</a></li>
+    <li><a href="/opretForhaandsaftale">Opret Forhåndsaftale</a></li>
+    <li><a href="/opretkontrakt">Lejekontrakt</a></li>
+    <li><a href="/indkoebBil">Indkøb Bil</a></li>
+    <li><a href="/Alarmer">Alarmer</a></li>
+    <li><a href="/Forhånds aftaler">Forhånds aftaler</a></li>
+    <li><a href="/Udleveringer">Udleveringer</a></li>
+    <li><a href="/brugeroversigt">Brugeroversigt</a></li>
   </ul>
 
 </div>

@@ -34,6 +34,9 @@
 
 
     <!-- Login-formular -->
+    <div th:if="${fejlbesked != null}" class="fejlbesked">
+        <p th:text="${fejlbesked}" style="color: red;"></p>
+    </div>
     <form action="/logind" method="post">
         <input type="text" name="brugernavn" placeholder="Brugernavn" required>
         <input type="password" name="adgangskode" placeholder="Adgangskode" required>

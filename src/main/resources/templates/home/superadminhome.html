@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SuperAdmin</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/table.css}">
+</head>
+<body>
+<!-- Genbrugt header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<!-- Inline margin -->
+<div style="margin-left: 220px; padding: 20px;">
+    <div class="indhold">
+        <h1> Der er forbindelse.... </h1>
+
+        <!-- Success- eller fejlbesked -->
+        <div th:if="${besked}" style="color: green;">
+            <p th:text="${besked}"></p>
+        </div>
+        <div th:if="${fejl}" style="color: red;">
+            <p th:text="${fejl}"></p>
+        </div>
+
+        <!-- Formular til at oprette ny bruger -->
+        <h2>Opret ny bruger</h2>
+        <form action="/opretBruger" method="post">
+            <label for="brugernavn">Brugernavn:</label><br>
+            <input type="text" id="brugernavn" name="brugernavn" required><br><br>
+
+            <label for="adgangskode">Adgangskode:</label><br>
+            <input type="password" id="adgangskode" name="adgangskode" required><br><br>
+
+            <label for="rolle">Rolle:</label><br>
+            <select id="rolle" name="rolle">
+                <option value="administrator">Administrator</option>
+                <option value="forretningsudvikler">Forretningsudvikler</option>
+            </select><br><br>
+
+            <button type="submit">Opret bruger</button>
+        </form>
+
+        <!-- tabel som viser eksiterne brugere -->
+<h2>Eksisterende brugere</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Brugernavn</th>
+        <th>Rolle</th>
+        <th>Handling</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bruger : ${brugere}">
+        <td th:text="${bruger.brugernavn}"></td>
+        <td th:text="${bruger.rolle}"></td>
+        <td>
+            <form th:action="@{/sletBruger}" method="post" onsubmit="return confirm('Er du sikker på, at du vil slette brugeren?');">
+                <input type="hidden" name="brugernavn" th:value="${bruger.brugernavn}" />
+                <button type="submit">Slet</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+    </div>
+</div>
+</body>
+</html>

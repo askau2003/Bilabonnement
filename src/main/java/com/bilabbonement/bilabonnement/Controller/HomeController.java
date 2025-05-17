@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -52,7 +53,8 @@ public class HomeController {
     @PostMapping("/logind")
     public String logind(@RequestParam String brugernavn,
                          @RequestParam String adgangskode,
-                         HttpSession session) {
+                         HttpSession session,
+                         Model model) {
         // Tjekker om brugeren findes i databasen og at adgangskoden matcher
         Bruger bruger = brugerService.validerLogin(brugernavn, adgangskode);
 
@@ -66,11 +68,14 @@ public class HomeController {
                     return "redirect:/logindhome"; // sender admin-brugere til admin-siden
                 case "forretningsudvikler":
                     return "redirect:/forretninghome"; // sender forretningsudviklere til deres side
+                case "superadmin":
+                    return "redirect:/superadminhome"; // Kan se begge sider på engang
                 default:
                     // Hvis brugeren har en ukendt rolle, kan vi evt. vise en fejlside eller logge ud
                     return "redirect:/";
             }
         } else {
+            model.addAttribute("fejlbesked", "Forkert brugernavn eller adgangskode");
             // Hvis login fejler, så bliver man bare på login-siden igen
             return "home/logind";
         }
@@ -88,6 +93,84 @@ public class HomeController {
     public String showLogindHome() {
         return "home/logindhome";
     }
+
+    // Viser superadmin-siden hvis brugeren er logget ind som superadmin
+    @GetMapping("/superadminhome")
+    public String visSuperadminHome(HttpSession session, Model model) {
+        Bruger bruger = (Bruger) session.getAttribute("bruger");
+
+        // Tjekker om brugeren er superadmin
+        if (bruger != null && bruger.getRolle().equalsIgnoreCase("superadmin")) {
+            model.addAttribute("brugere", brugerService.findAlleBrugere()); // Tilføjer alle brugere til visning
+            return "home/superadminhome";
+        } else {
+            return "redirect:/"; // Sender tilbage til forsiden hvis ikke superadmin
+        }
+    }
+
+    @GetMapping("/opretbruger")
+    public String redirectOpretBruger() {
+        return "redirect:/superadminhome";
+    }
+
+    // Opretter en ny bruger via formular
+    @PostMapping("/opretBruger")
+    public String opretBruger(@RequestParam String brugernavn,
+                              @RequestParam String adgangskode,
+                              @RequestParam String rolle,
+                              HttpSession session,
+                              RedirectAttributes redirectAttributes) {
+
+        Bruger nuvaerendeBruger = (Bruger) session.getAttribute("bruger");
+
+        // Tjekker om bruger er superadmin før oprettelse
+        if (nuvaerendeBruger == null || !nuvaerendeBruger.getRolle().equalsIgnoreCase("superadmin")) {
+            return "redirect:/superadminhome";
+        }
+
+        Bruger nyBruger = new Bruger(brugernavn, adgangskode, rolle);
+        boolean succes = brugerService.opretBruger(nyBruger);
+
+        // Tilføjer besked alt efter om oprettelse lykkedes
+        if (succes) {
+            redirectAttributes.addFlashAttribute("besked", "Bruger oprettet!");
+        } else {
+            redirectAttributes.addFlashAttribute("fejl", "Brugernavn eksisterer allerede!");
+        }
+
+        return "redirect:/superadminhome"; // Loader siden igen med opdateret liste
+    }
+
+    // addFlashAttribute bruges til at sende beskeder med til næste side efter redirect,
+    // fordi normale model-data ikke følger med ved redirect.
+
+
+    @GetMapping("/sletBruger")
+    public String redirectSletBruger() {
+        return "redirect:/superadminhome";
+    }
+
+    // Sletter en bruger via POST-request
+    @PostMapping("/sletBruger")
+    public String sletBruger(@RequestParam String brugernavn, HttpSession session, RedirectAttributes redirectAttributes) {
+        Bruger nuvaerendeBruger = (Bruger) session.getAttribute("bruger");
+
+        if (nuvaerendeBruger == null || !nuvaerendeBruger.getRolle().equalsIgnoreCase("superadmin")) {
+            return "redirect:/";
+        }
+
+        boolean succes = brugerService.sletBruger(brugernavn);
+
+        if (succes) {
+            redirectAttributes.addFlashAttribute("besked", "Bruger " + brugernavn + " er slettet.");
+        } else {
+            redirectAttributes.addFlashAttribute("fejl", "Kunne ikke slette brugeren " + brugernavn);
+        }
+        return "redirect:/superadminhome";
+    }
+
+    // addFlashAttribute bruges til at sende beskeder med til næste side efter redirect,
+    // fordi normale model-data ikke følger med ved redirect.
 
 
     // side til og oprette kontrakt
