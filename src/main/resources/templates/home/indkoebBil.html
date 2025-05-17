@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Indkøb Biler</title>
+    <link rel="stylesheet" href="/css/header.css">
+
+    <style>
+        .kasse {
+            border: 1px solid black; /* border */
+            border-radius: 20px; /* runde hjørner */
+            box-shadow: 2px 2px grey; /* skygge */
+            background-color: rgb(21, 146, 195); /* farve på kasser */
+            width: 400px; /* bredde på kasse */
+            height: 350px; /* højde på kasse */
+            margin: 25px; /* mellemrum rundt om kassen */
+            padding: 10px; /* mellemrum inde i kassen */
+        }
+
+        p, h3 {
+            color: white; /* tekstfarve */
+            text-align: center; /* centrer tekst */
+        }
+
+        p {
+            font-size: 50px; /* størrelse på paragraf */
+            font-weight: bold; /* fed skrift */
+        }
+
+        h3 {
+            font-size: 25px; /* størrelse på h3 */
+            font-weight: bold; /* fed skrift */
+        }
+
+        .linje {
+            display: flex; /* flexbox */
+            justify-content: space-evenly; /* lige meget plads mellem kasser horizontalt */
+            align-content: space-evenly; /* lige meget plads mellem kasser vertikalt */
+            flex-wrap: wrap; /* children går på næste linje hvis nødvendigt // Children = divs inde i divs */
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="indkøb indhold">
+
+    <div class="linje">
+        <div class="kasse">
+        </div>
+        <div class="kasse">
+        </div>
+        <div class="kasse">
+        </div>
+        <div class="kasse">
+        </div>
+        <div class="kasse">
+        </div>
+        <div class="kasse">
+        </div>
+    </div>
+</div>
+</body>
+</html>

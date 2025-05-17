@@ -197,9 +197,13 @@ public class HomeController {
         return "redirect:/dataTilfoejet"; // godkendelses side
     }
 
-    @GetMapping("dataTilfoejet")
+    @GetMapping("/dataTilfoejet")
     public String dataTilfoejet() {
         return "home/dataTilfoejet";
     }
 
+    @GetMapping("/indkoebBil")
+    public String indkoebBil() {
+        return "home/indkoebBil";
+    }
 }
