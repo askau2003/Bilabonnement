@@ -13,8 +13,8 @@
             border-radius: 20px; /* runde hjørner */
             box-shadow: 2px 2px grey; /* skygge */
             background-color: rgb(21, 146, 195); /* farve på kasser */
-            width: 400px; /* bredde på kasse */
-            height: 350px; /* højde på kasse */
+            width: 700px; /* bredde på kasse */
+            height: 560px; /* højde på kasse */
             margin: 25px; /* mellemrum rundt om kassen */
             padding: 10px; /* mellemrum inde i kassen */
         }
@@ -29,7 +29,16 @@
 
         .bilbillede {
             width: 100%; /* bredde på graf */
-            object-fit: contain; /* holder graf inde i kasse uden at ændre på aspect ratio */
+            height: 470px; /* højde på billede */
+            border-radius: 20px; /* runde hjørner */
+        }
+
+        table {
+            width: 100%;
+        }
+
+        th, td {
+            padding: 5px;
         }
     </style>
 </head>
@@ -38,7 +47,9 @@
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
 
-<div class="indkøb indhold">
+<div class="indhold">
+
+    <h1 style="text-align: center">Indkøb af biler</h1>
 
     <div class="linje">
         <div class="kasse">
@@ -63,7 +74,7 @@
                     <td>Fuldt udstyr</td>
                     <td>Betalt</td>
                     <td>176 g/km</td>
-                    <td>1.599.000 kr</td>
+                    <td style="text-decoration: underline">1.599.000 kr</td>
                 </tr>
                 </tbody>
             </table>
@@ -90,40 +101,13 @@
                     <td>Fuldt udstyr</td>
                     <td>Betalt</td>
                     <td>90 g/km</td>
-                    <td>263.400 kr</td>
+                    <td style="text-decoration: underline">263.400 kr</td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <div class="kasse">
-            <img src="/images/bil3.png" alt="Volkswagen Golf Sportsvan" class="bilbillede">
-            <table>
-                <thead>
-                <tr>
-                    <th>Mærke</th>
-                    <th>Model</th>
-                    <th>Årgang</th>
-                    <th>Udstyrniveau</th>
-                    <th>Reg. Afgift</th>
-                    <th>CO2-udledning</th>
-                    <th>Pris</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Volkswagen</td>
-                    <td>Golf Sportsvan</td>
-                    <td>2019</td>
-                    <td>Halvt udstyr</td>
-                    <td>Betalt</td>
-                    <td>101 g/km</td>
-                    <td>149.500 kr</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="kasse">
-            <img src="/images/bil4.png" alt="Ferrari F355" class="bilbillede">
+            <img src="/images/bil3.png" alt="Ferrari F355" class="bilbillede">
             <table>
                 <thead>
                 <tr>
@@ -144,40 +128,13 @@
                     <td>Fuldt udstyr</td>
                     <td>Betalt</td>
                     <td>354 g/km</td>
-                    <td>749.900 kr</td>
+                    <td style="text-decoration: underline">749.900 kr</td>
                 </tr>
                 </tbody>
             </table>
         </div>
         <div class="kasse">
-            <img src="/images/bil5.png" alt="Toyota GR Yaris" class="bilbillede">
-            <table>
-                <thead>
-                <tr>
-                    <th>Mærke</th>
-                    <th>Model</th>
-                    <th>Årgang</th>
-                    <th>Udstyrniveau</th>
-                    <th>Reg. Afgift</th>
-                    <th>CO2-udledning</th>
-                    <th>Pris</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Toyota</td>
-                    <td>GR Yaris</td>
-                    <td>2024</td>
-                    <td>Fuldt udstyr</td>
-                    <td>Ikke Betalt</td>
-                    <td>198 g/km</td>
-                    <td>894.000 kr</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="kasse">
-            <img src="/images/bil6.png" alt="Mercedes Maybach G650" class="bilbillede">
+            <img src="/images/bil4.png" alt="Mercedes Maybach G650" class="bilbillede">
             <table>
                 <thead>
                 <tr>
@@ -198,7 +155,7 @@
                     <td>Fuldt udstyr</td>
                     <td>Ikke Betalt</td>
                     <td>328 g/km</td>
-                    <td>4.999.000 kr</td>
+                    <td style="text-decoration: underline">4.999.000 kr</td>
                 </tr>
                 </tbody>
             </table>
