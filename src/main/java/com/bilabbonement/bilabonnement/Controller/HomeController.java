@@ -77,11 +77,12 @@ public class HomeController {
     }
 
     @GetMapping("/forretninghome")
-
-    public String showForretningHome()
-    {
+    public String visUdlejedeBiler(Model model) {
+        List<BilUdlejningStatistik> statistikList = bilService.findAntalUdlejningerPrBil();
+        model.addAttribute("statistik", statistikList);
         return "home/forretninghome";
     }
+
 
     @GetMapping("/logindhome")
     public String showLogindHome() {

@@ -3,12 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/css/table.css">
     <!-- Ekstern CSS til header -->
     <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
-<h1>hhhh</h1>
+<!-- Inline margin -->
+<div style="margin-left: 220px; padding: 20px;">
+<!-- Indholdet rykket til højre så det ikke overlapper venstre header -->
+<div class="indhold">
+    <h1>Biler der er udlejet</h1>
+    <h2>Populære biler - antal udlejninger</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Vognnummer</th>
+            <th>Mærke</th>
+            <th>Model</th>
+            <th>Nummerplade</th>
+            <th>Antal udlejninger</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bil : ${statistik}">
+            <td th:text="${bil.vognnummer}"></td>
+            <td th:text="${bil.maerke}"></td>
+            <td th:text="${bil.model}"></td>
+            <td th:text="${bil.nummerplade}"></td>
+            <td th:text="${bil.antalUdlejninger}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
 </body>
 </html>
