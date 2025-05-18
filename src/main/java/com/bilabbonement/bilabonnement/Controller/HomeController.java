@@ -318,4 +318,7 @@ public class HomeController {
     public String alarmer() {
         return "home/alarmer";
     }
+
+    @GetMapping("/afleveringer")
+    public String afleveringer() {return "home/afleveringer";}
 }
