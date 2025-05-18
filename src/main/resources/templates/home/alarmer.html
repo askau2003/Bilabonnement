@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alarmer</title>
+    <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/header.css">
+</head>
+<body>
+
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="indhold">
+    <h1 style="text-align: center">Alarmer</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Dato</th>
+            <th>Alarmtype</th>
+            <th>Alarm</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>18-5-2025</td>
+            <td>Lav bilbestand</td>
+            <td>Lav bestand af Opel Corsa 2021</td>
+        </tr>
+        <tr>
+            <td>23-5-2025</td>
+            <td>Statusskift</td>
+            <td>Vognnummer 57 har nu været til Rengøring i 31 dage</td>
+        </tr>
+        <tr>
+            <td>25-5-2025</td>
+            <td>Lav bilbestand</td>
+            <td>Lav bestand af Ferrari F355</td>
+        </tr>
+        <tr>
+            <td>28-5-202</td>
+            <td>Statusskift</td>
+            <td>Vognnummer 23 har nu været på Værksted i 8 dage</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

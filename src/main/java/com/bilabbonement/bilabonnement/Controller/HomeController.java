@@ -313,4 +313,9 @@ public class HomeController {
         // Redirect tilbage til statusbiler-siden for at se opdateringen
         return "redirect:/statusbiler";
     }
+
+    @GetMapping("/alarmer")
+    public String alarmer() {
+        return "home/alarmer";
+    }
 }
