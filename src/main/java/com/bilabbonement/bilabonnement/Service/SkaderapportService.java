@@ -32,4 +32,10 @@ public class SkaderapportService {
     public void opdaterRapport(Skaderapport rapport) {
         repository.update(rapport);
     }
+
+    public List<Skaderapport> findByVognnummer(int vognnummer) {
+        return repository.findByVognnummer(vognnummer);
+    }
+
+
 }

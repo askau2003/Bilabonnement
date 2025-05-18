@@ -60,4 +60,11 @@ public class SkaderapportRepository {
                 rapport.getVognnummer(),
                 rapport.getRapport_id());
     }
+
+    // Henter alle skadesrapporter for et bestemt vognnummer
+    public List<Skaderapport> findByVognnummer(int vognnummer) {
+        String sql = "SELECT * FROM skaderapport WHERE vognnummer = ?";
+        return jdbcTemplate.query(sql, rowMapper, vognnummer);
+    }
+
 }
