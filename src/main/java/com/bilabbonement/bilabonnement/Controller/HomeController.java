@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -289,5 +290,27 @@ public class HomeController {
     @GetMapping("/indkoebBil")
     public String indkoebBil() {
         return "home/indkoebBil";
+    }
+
+    @GetMapping("/statusbiler")
+    public String visBilerGrupperet(Model model) {
+        // Hent biler grupperet efter status til visning i kanban eller tabel
+        Map<String, List<Bil>> grupperet = bilService.findAllGroupedByStatus();
+        model.addAttribute("bilerGrupperet", grupperet);
+
+        // Hent alle biler til dropdown-menuen, hvor brugeren kan vælge bil til statusændring
+        List<Bil> alleBiler = bilService.findAll();
+        model.addAttribute("alleBiler", alleBiler);
+
+        return "home/statusbiler";
+    }
+
+    @PostMapping("/bil/skiftStatus")
+    public String skiftStatus(@RequestParam int vognnummer, @RequestParam String nyStatus) {
+        // Opdater bilens status i databasen via service-laget
+        bilService.opdaterBilStatus(vognnummer, nyStatus);
+
+        // Redirect tilbage til statusbiler-siden for at se opdateringen
+        return "redirect:/statusbiler";
     }
 }

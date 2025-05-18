@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Status på biler</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/table.css}">
+    <link rel="stylesheet" th:href="@{/css/statusbiler.css}">
+</head>
+<body>
+<!-- Genbrugt header -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div style="margin-left: 220px; padding: 20px;">
+    <div class="indhold">
+        <h1>Status på biler</h1>
+
+        <div class="kanban-container">
+            <div class="kanban-column" th:each="entry : ${bilerGrupperet}">
+                <h2 th:text="|${entry.key} (${#lists.size(entry.value)})|">Status (0)</h2>
+
+                <div class="bil-kort" th:each="bil : ${entry.value}">
+                    <p><strong>Reg.nr.:</strong> <span th:text="${bil.vognnummer}">12345</span></p>
+                    <p><strong>Nummerplade:</strong> <span th:text="${bil.nummerplade}">AB12345</span></p>
+                    <p><strong>Mærke:</strong> <span th:text="${bil.maerke}">Toyota</span></p>
+                    <p><strong>Model:</strong> <span th:text="${bil.model}">Yaris</span></p>
+                    <p><strong>Farve:</strong> <span th:text="${bil.farve}">Farve</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <form th:action="@{/bil/skiftStatus}" method="post">
+        <label for="vognnummer">Vælg bil:</label>
+        <select name="vognnummer" id="vognnummer" required>
+            <option value="" disabled selected>-- Vælg bil --</option>
+            <option th:each="bil : ${alleBiler}"
+                    th:value="${bil.vognnummer}"
+                    th:text="${bil.vognnummer + ' - ' + bil.maerke + ' ' + bil.model}">
+            </option>
+        </select>
+
+        <label for="nyStatus">Ny status:</label>
+        <select name="nyStatus" id="nyStatus" required>
+            <option value="" disabled selected>-- Vælg status --</option>
+            <option value="Ledig">Ledig</option>
+            <option value="Udlejet">Udlejet</option>
+            <option value="Udleveres">Udleveres</option>
+            <option value="Reserveret">Reserveret</option>
+            <option value="Værksted">Værksted</option>
+            <option value="Rengoeres">Rengøres</option>
+        </select>
+
+        <button type="submit">Skift status</button>
+    </form>
+</div>
+</body>
+</html>
