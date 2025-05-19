@@ -65,4 +65,8 @@ public class LejekontraktService {
         lejekontraktRepository.opretLejeKontrakt(kontrakt);
     }
 
+    public List<Lejekontrakt> findAlleAktive() {
+        return lejekontraktRepository.findAlleAktive();
+    }
+
 }

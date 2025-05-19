@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Aflevering af bil</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" href="/css/table.css">
+    <style>
+        body
+        {
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="indhold">
+    <h1>Aflevering af biler</h1>
 
-<h1>Tilbagelevering af bil</h1>
-
-<form action="/aflevering" method="post">
-    <label for="vognnummer">Vognnummer:</label>
-    <input type="number" id="vognnummer" name="vognnummer" required>
-    <button type="submit">Hent Tilstandsrapport(er)</button>
-</form>
-
-<!-- Check om der findes rapporter -->
-<div th:if="${rapporter != null and !rapporter.isEmpty()}">
-    <h2>Tilstandsrapporter</h2>
-    <table border="1">
-        <thead>
-        <tr>
-            <th>Rapport ID</th>
-            <th>Beskrivelse</th>
-            <th>Pris (kr.)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="rapport : ${rapporter}">
-            <td th:text="${rapport.rapportId}"></td>
-            <td th:text="${rapport.beskrivelse}"></td>
-            <td th:text="${rapport.pris}"></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="tabel">
+        <h2>Aktive Lejekontrakter</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Vognnummer</th>
+                <th>Afleveringsadresse</th>
+                <th>Afleveringsdato</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="kontrakt : ${kontrakter}">
+                <td th:text="${kontrakt.vognnummer}">12345</td>
+                <td th:text="${kontrakt.afleverings_adresse}">Adresse</td>
+                <td th:text="${kontrakt.slutdato}">2025-06-01</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
-<!-- Hvis der ikke findes rapporter -->
-<div th:if="${rapporter != null and rapporter.isEmpty()}">
-    <p>Ingen tilstandsrapporter fundet for dette vognnummer.</p>
-</div>
-
 </body>
 </html>

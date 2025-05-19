@@ -330,12 +330,9 @@ public class HomeController {
     }
 
     @GetMapping("/afleveringer")
-    public String afleveringer(@RequestParam(required = false) Integer vognnummer, Model model) {
-        if (vognnummer != null) {
-            List<Skaderapport> rapporter = skaderapportService.findByVognnummer(vognnummer);
-            model.addAttribute("rapporter", rapporter);
-            model.addAttribute("vognnummer", vognnummer);
-        }
+    public String visAfleveringer(Model model) {
+        List<Lejekontrakt> kontrakter = lejekontraktService.findAlleAktive();
+        model.addAttribute("kontrakter", kontrakter);
         return "home/afleveringer";
     }
 }

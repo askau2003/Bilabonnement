@@ -55,4 +55,12 @@ public class LejekontraktRepository {
         RowMapper<OmsaetningMaaned> rowMapper = new BeanPropertyRowMapper<>(OmsaetningMaaned.class);
         return template.query(sql, rowMapper);
     }
+
+    public List<Lejekontrakt> findAlleAktive() {
+        String sql = "SELECT * FROM lejekontrakt WHERE slutdato >= CURDATE()";
+        RowMapper<Lejekontrakt> rowMapper = new BeanPropertyRowMapper<>(Lejekontrakt.class);
+        return template.query(sql, rowMapper);
+    }
+
+
 }
