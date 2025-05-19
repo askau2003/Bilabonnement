@@ -117,6 +117,24 @@
             </tr>
             </tbody>
         </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Rapport ID</th>
+                <th>Beskrivelse</th>
+                <th>Pris</th>
+                <th>Vognnummer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="rapport : ${rapporter}">
+                <td th:text="${rapport.rapport_id}">1</td>
+                <td th:text="${rapport.beskrivelse}">Beskrivelse</td>
+                <td th:text="${rapport.pris}">1000</td>
+                <td th:text="${rapport.vognnummer}">12345</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>

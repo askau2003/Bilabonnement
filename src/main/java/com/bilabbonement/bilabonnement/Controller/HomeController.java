@@ -186,6 +186,8 @@ public class HomeController {
 
         List<Kunde> kundeList = kundeService.selectLejerID();
         model.addAttribute("kundeList",kundeList);
+
+        model.addAttribute("rapporter", skaderapportService.hentAlleRapporter());
         return "home/opretkontrakt";
     }
 
