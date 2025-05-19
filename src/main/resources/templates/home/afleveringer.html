@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Aflevering af bil</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" href="/css/table.css">
+    <style>
+        body
+        {
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
-
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+<div class="indhold">
 <h1>Tilbagelevering af bil</h1>
 
 <form action="/aflevering" method="post">
@@ -39,6 +50,6 @@
 <div th:if="${rapporter != null and rapporter.isEmpty()}">
     <p>Ingen tilstandsrapporter fundet for dette vognnummer.</p>
 </div>
-
+</div>
 </body>
 </html>
