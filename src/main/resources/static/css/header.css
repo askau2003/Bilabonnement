@@ -39,8 +39,35 @@ body {
     text-decoration: underline;
 }
 
+.side-header h2 {
+    color: rgb(21, 146, 195); /* Samme farve som menupunkterne */
+    border-bottom: 1px solid black; /* Lav en blå linje under */
+    padding-bottom: 5px; /* Giver lidt luft mellem tekst og linje */
+    margin-bottom: 15px; /* Luft ned til næste element */
+}
+
 /* Indholdet til højre for venstre-headeren */
 .indhold {
     margin-left: 220px;
     padding: 20px;
+}
+
+/* Centerer tilbage-knappen */
+.center {
+    text-align: center;
+}
+
+.logout-button {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 20px;
+}
+.logout-button:hover {
+    background-color: #c82333;
 }

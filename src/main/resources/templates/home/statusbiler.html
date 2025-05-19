@@ -13,6 +13,32 @@
 
 <div style="margin-left: 220px; padding: 20px;">
     <div class="indhold">
+
+        <form th:action="@{/bil/skiftStatus}" method="post">
+            <label for="vognnummer">Vælg bil:</label>
+            <select name="vognnummer" id="vognnummer" required>
+                <option value="" disabled selected>-- Vælg bil --</option>
+                <option th:each="bil : ${alleBiler}"
+                        th:value="${bil.vognnummer}"
+                        th:text="${bil.vognnummer + ' - ' + bil.maerke + ' ' + bil.model}">
+                </option>
+            </select>
+
+            <label for="nyStatus">Ny status:</label>
+            <select name="nyStatus" id="nyStatus" required>
+                <option value="" disabled selected>-- Vælg status --</option>
+                <option value="Ledig">Ledig</option>
+                <option value="Udlejet">Udlejet</option>
+                <option value="Udleveres">Udleveres</option>
+                <option value="Reserveret">Reserveret</option>
+                <option value="Værksted">Værksted</option>
+                <option value="Rengoeres">Rengøres</option>
+            </select>
+
+            <button type="submit">Skift status</button>
+        </form>
+
+        <hr>
         <h1>Status på biler</h1>
 
         <div class="kanban-container">
@@ -29,32 +55,6 @@
             </div>
         </div>
     </div>
-
-    <hr>
-
-    <form th:action="@{/bil/skiftStatus}" method="post">
-        <label for="vognnummer">Vælg bil:</label>
-        <select name="vognnummer" id="vognnummer" required>
-            <option value="" disabled selected>-- Vælg bil --</option>
-            <option th:each="bil : ${alleBiler}"
-                    th:value="${bil.vognnummer}"
-                    th:text="${bil.vognnummer + ' - ' + bil.maerke + ' ' + bil.model}">
-            </option>
-        </select>
-
-        <label for="nyStatus">Ny status:</label>
-        <select name="nyStatus" id="nyStatus" required>
-            <option value="" disabled selected>-- Vælg status --</option>
-            <option value="Ledig">Ledig</option>
-            <option value="Udlejet">Udlejet</option>
-            <option value="Udleveres">Udleveres</option>
-            <option value="Reserveret">Reserveret</option>
-            <option value="Værksted">Værksted</option>
-            <option value="Rengoeres">Rengøres</option>
-        </select>
-
-        <button type="submit">Skift status</button>
-    </form>
 </div>
 </body>
 </html>

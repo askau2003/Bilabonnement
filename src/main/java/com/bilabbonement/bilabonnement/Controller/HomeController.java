@@ -65,7 +65,7 @@ public class HomeController {
 
             // Tjekker hvilken rolle brugeren har, og sender videre til den rigtige side
             switch (bruger.getRolle().toLowerCase()) {
-                case "administrator":
+                case "administrationsmedarbejder":
                     return "redirect:/logindhome"; // sender admin-brugere til admin-siden
                 case "forretningsudvikler":
                     return "redirect:/forretninghome"; // sender forretningsudviklere til deres side

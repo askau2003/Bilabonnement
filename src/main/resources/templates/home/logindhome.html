@@ -25,51 +25,45 @@
 
     <!-- Hver menu-item er en klikbar boks med billede og tekst -->
     <a th:href="@{/opretkontrakt}" class="menu-item">
-        <img src="/images/Lejeaftale.png" alt="Lejeaftaler"/>
-        <div>Lejekontrakt</div>
+        <img src="/images/Lejeaftale.png" alt="Opret Lejekontrakt"/>
+        <div>Opret Lejekontrakt</div>
+    </a>
+
+    <a th:href="@{/opretForhaandsaftale}" class="menu-item">
+        <img src="/images/Skadesrapport.png" alt="Opret Forhåndsaftale"/>
+        <div>Opret Forhåndsaftale</div>
     </a>
 
     <a th:href="@{/skadesrapporter}" class="menu-item">
-        <img src="/images/Skadesrapport.png" alt="Skadesrapporter"/>
-        <div>Skadesrapporter</div>
+        <img src="/images/bilensrejse.png" alt="Opret Skadesrapport"/>
+        <div>Opret Skadesrapport</div>
     </a>
 
-    <a th:href="@{/Bilstatus}" class="menu-item">
-        <img src="/images/bilensrejse.png" alt="Bilens Rejse"/>
-        <div>Bilens Rejse</div>
+    <a th:href="@{/lagerstatus}" class="menu-item">
+        <img src="/images/alarmer.png" alt="Lagerstatus"/>
+        <div>Lagerstatus</div>
     </a>
 
-    <a th:href="@{/Alarmer}" class="menu-item">
-        <img src="/images/alarmer.png" alt="Alarmer"/>
-        <div>Alarmer</div>
+    <a th:href="@{/reserveredeBiler}" class="menu-item">
+        <img src="/images/afslutning.png" alt="Reserverede Biler"/>
+        <div>Reserverede Biler</div>
     </a>
 
-    <a th:href="@{/Forhaandsaftaler}" class="menu-item">
-        <img src="/images/forhaand.png" alt="Forhåndsaftaler"/>
-        <div>Forhåndsaftaler</div>
+    <a th:href="@{/reserveredeBiler}" class="menu-item">
+        <img src="/images/forhaand.png" alt="Reserverede Biler"/>
+        <div>Reserverede Biler</div>
     </a>
 
-    <a th:href="@{/Udleveringer}" class="menu-item">
+    <a th:href="@{/udlevering}" class="menu-item">
         <img src="/images/udlevering.png" alt="Udlevering"/>
         <div>Udlevering</div>
     </a>
 
-    <a th:href="@{/Aflevering}" class="menu-item">
-        <img src="/images/afslutning.png" alt="Aflevering"/>
-        <div>Tilbagelevering</div>
-    </a>
-
-    <a th:href="@{/Lagerstatus}" class="menu-item">
-        <img src="/images/lagerstatus.png" alt="Lagerstatus"/>
-        <div>Lagerstatus</div>
+    <a th:href="@{/alarmer}" class="menu-item">
+        <img src="/images/afslutning.png" alt="Alarmer"/>
+        <div>Alarmer</div>
     </a>
 
 </div>
-
-<!-- Tilbage-knap nederst -->
-<div class="center">
-    <a th:href="@{/}" class="back-button">Tilbage</a>
-</div>
-
 </body>
 </html>

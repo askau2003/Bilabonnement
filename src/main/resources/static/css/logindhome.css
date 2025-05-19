@@ -31,18 +31,3 @@
     height: 130px;
     object-fit: contain; /* Sørger for korrekt skalering */
 }
-
-/* Tilbage-knap */
-.back-button {
-    margin-top: 30px;
-    padding: 10px 20px;
-    border: 2px solid black;
-    display: inline-block;
-    text-decoration: none;
-    color: black;
-}
-
-/* Centerer tilbage-knappen */
-.center {
-    text-align: center;
-}
