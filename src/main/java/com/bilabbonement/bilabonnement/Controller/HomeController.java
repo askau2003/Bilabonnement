@@ -178,6 +178,14 @@ public class HomeController {
     @GetMapping("/opretkontrakt")
     public String visOpretKontraktForm(Model model) {
         model.addAttribute("kontrakt", new Lejekontrakt());
+        List<Adresse> adresseList = adresseService.selectAll();
+        model.addAttribute("adresseList",adresseList);
+
+        List<Bil> bilList = bilService.selectVognnummer();
+        model.addAttribute("bilList",bilList);
+
+        List<Kunde> kundeList = kundeService.selectLejerID();
+        model.addAttribute("kundeList",kundeList);
         return "home/opretkontrakt";
     }
 

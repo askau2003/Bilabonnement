@@ -5,67 +5,120 @@
     <title>Opretkontrakt</title>
     <link rel="stylesheet" href="/css/lejeaftale.css">
     <link rel="stylesheet" th:href="@{/css/header.css}">
-        </head>
+
+    <style>
+        h1, form {
+            text-align: center;
+        }
+
+    </style>
+    <link rel="stylesheet" href="/css/table.css">
+
+</head>
 <body>
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
-<div class="contain">
+<div class="indhold">
 
-        <!--Actions til og oprette en kontrakt-->
-<form action="/opretkontrakt" method="post">
-    <label for="pris">Pris:</label>
-    <input type="number" id="pris" name="pris"><br>
+    <h1>Opret lejekontrakt</h1>
 
-    <label for="depositum">Depositum:</label>
-    <input type="number" id="depositum" name="depositum"><br>
+    <!--Actions til og oprette en kontrakt-->
+    <form action="/opretkontrakt" method="post">
+        <label for="pris">Pris:</label>
+        <input type="number" id="pris" name="pris"><br>
 
-    <label>Valuta:</label>
-    <input type="radio" id="euro" name="valuta" value="euro">
-    <label for="euro">Euro</label>
-    <input type="radio" id="dkk" name="valuta" value="dkk">
-    <label for="dkk">DKK</label><br>
+        <label for="depositum">Depositum:</label>
+        <input type="number" id="depositum" name="depositum"><br>
 
-    <label for="vognnummer">Vogn_Nummer:</label>
-    <input type="number" id="vognnummer" name="vognnummer"><br>
+        <label>Valuta:</label>
+        <input type="radio" id="euro" name="valuta" value="euro">
+        <label for="euro">Euro</label>
+        <input type="radio" id="dkk" name="valuta" value="dkk">
+        <label for="dkk">DKK</label><br>
 
-    <label for="startdato">Start_Dato:</label>
-    <input type="date" id="startdato" name="startdato">
+        <label for="vognnummer">Vognnummer:</label>
+        <input type="number" id="vognnummer" name="vognnummer"><br>
 
-    <label for="slutdato">Slut_Dato:</label>
-    <input type="date" id="slutdato" name="slutdato"><br>
+        <label for="startdato">Start Dato:</label>
+        <input type="date" id="startdato" name="startdato">
 
-    <label for="lejer_id">Lejer_Id:</label>
-    <input type="number" id="lejer_id" name="lejer_id"><br>
+        <label for="slutdato">Slut Dato:</label>
+        <input type="date" id="slutdato" name="slutdato"><br>
 
-    <label for="afhentnings_adresse">Afhentningsadresse:</label>
-    <input type="number" id="afhentnings_adresse" name="afhentnings_adresse"><br>
+        <label for="lejer_id">Lejer ID:</label>
+        <input type="number" id="lejer_id" name="lejer_id"><br>
 
-    <label for="afleverings_adresse">Afleveringsadresse:</label>
-    <input type="number" id="afleverings_adresse" name="afleverings_adresse"><br>
+        <label for="afhentnings_adresse">Afhentningsadresse:</label>
+        <input type="number" id="afhentnings_adresse" name="afhentnings_adresse"><br>
 
-    <label for="rapport_id">Rapport ID:</label>
-    <input type="number" id="rapport_id" name="rapport_id"><br>
+        <label for="afleverings_adresse">Afleveringsadresse:</label>
+        <input type="number" id="afleverings_adresse" name="afleverings_adresse"><br>
 
-    <button type="submit">Opret kontrakt</button>
-    <button type="reset" onclick="return confirm('er du sikker på du vil reset?')">Reset</button>
+        <label for="rapport_id">Rapport ID:</label>
+        <input type="number" id="rapport_id" name="rapport_id"><br>
 
-</form>
+        <button type="submit">Opret kontrakt</button>
+        <button type="reset" onclick="return confirm('er du sikker på du vil reset?')">Reset</button>
 
-<div class="search">
-    <form action="/soeg_kunde" method="get">
-        <label for="kunde">Søg_Kunde:</label>
-        <input type="search" id="kunde"><br>
-
-        <button type="submit">Søg</button>
     </form>
 
-    <form class="/soeg_bil">
-        <label for="bil">Søg_Bil:</label>
-        <input type="search" id="bil"><br>
+    <div class="tabel">
+        <table>
+            <thead>
+            <tr>
+                <th>Adresse ID</th>
+                <th>Vejnavn</th>
+                <th>Vejnummer</th>
+                <th>Postnummer</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="adresse : ${adresseList}">
+                <td th:text="${adresse.adresse_id}"></td>
+                <td th:text="${adresse.vej_navn}"></td>
+                <td th:text="${adresse.vej_nummer}"></td>
+                <td th:text="${adresse.postnummer}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Lejer ID</th>
+                <th>Navn</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="kunde : ${kundeList}">
+                <td th:text="${kunde.lejer_id}"></td>
+                <td th:text="${kunde.navn}"></td>
+                <td th:text="${kunde.email}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <table>
+            <thead>
+            <tr>
+                <th>Vognnummer</th>
+                <th>Stelnummer</th>
+                <th>Nummerplade</th>
+                <th>Mærke</th>
+                <th>Model</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bil : ${bilList}">
+                <td th:text="${bil.vognnummer}"></td>
+                <td th:text="${bil.stelnummer}"></td>
+                <td th:text="${bil.nummerplade}"></td>
+                <td th:text="${bil.maerke}"></td>
+                <td th:text="${bil.model}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <button type="submit">Søg</button>
-    </form>
-</div>
 </div>
 </body>
 </html>
