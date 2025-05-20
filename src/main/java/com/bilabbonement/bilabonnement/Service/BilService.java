@@ -69,4 +69,8 @@ public class BilService {
         // Returnér den sorterede Map med biler grupperet efter status
         return sorteretMap;
     }
+
+    public void opretBil(Bil bil) {
+        bilRepository.opretBil(bil);
+    }
 }

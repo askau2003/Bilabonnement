@@ -1,5 +1,6 @@
 package com.bilabbonement.bilabonnement.Repository;
 
+import com.bilabbonement.bilabonnement.Model.Adresse;
 import com.bilabbonement.bilabonnement.Model.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -36,7 +37,7 @@ public class BilRepository {
                 "FROM bil\n" +
                 "Where status = 'Reserveret'";
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
-        return template.query(sql,rowMapper);
+        return template.query(sql, rowMapper);
     }
 
     public void opdaterBilStatus(int vognnummer, String nyStatus) {
@@ -56,8 +57,8 @@ public class BilRepository {
         RowMapper<Bil> rowMapper = new BeanPropertyRowMapper<>(Bil.class);
         return template.query(sql, rowMapper);
     }
-    public List<BilUdlejningStatistik> findAntalUdlejningerPrBil()
-    {
+
+    public List<BilUdlejningStatistik> findAntalUdlejningerPrBil() {
         String sql = "SELECT b.vognnummer, b.maerke, b.model, b.nummerplade, " +
                 "COUNT(l.kontrakt_id) AS antalUdlejninger " +
                 "FROM bil b " +
@@ -67,5 +68,13 @@ public class BilRepository {
 
         RowMapper<BilUdlejningStatistik> rowMapper = new BeanPropertyRowMapper<>(BilUdlejningStatistik.class);
         return template.query(sql, rowMapper);
+    }
+
+    public void opretBil(Bil bil) {
+        String sql = "INSERT INTO bil " +
+                "(stelnummer,nummerplade,maerke,model,braendstof,farve,status,anhaengertraek,odometer,automatgear) " +
+                "VALUES (?,?,?,?,?,?,?,?,?,?)";
+        template.update(sql, bil.getStelnummer(), bil.getNummerplade(), bil.getMaerke(), bil.getModel(), bil.getBraendstof(),
+                bil.getFarve(), bil.getStatus(), bil.isAnhaengertraek(), bil.getOdometer(), bil.isAutomatgear());
     }
 }

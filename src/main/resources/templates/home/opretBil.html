@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Adresse</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <style>
+        form {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .flex {
+            flex-direction: row;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="indhold">
+    <h1 style="text-align: center">Opret Adresse</h1>
+
+    <form action="/opretBil" method="post">
+        <h2>Opret Bil</h2>
+
+        <div class="flex">
+            <label for="stelnummer">Stelnummer:</label>
+            <input type="text" id="stelnummer" name="stelnummer" maxlength="17" required>
+        </div>
+
+        <div class="flex">
+            <label for="nummerplade">Nummerplade:</label>
+            <input type="text" id="nummerplade" name="nummerplade" required>
+        </div>
+
+        <div class="flex">
+            <label for="maerke">Mærke:</label>
+            <input type="text" id="maerke" name="maerke" required>
+        </div>
+
+        <div class="flex">
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" required>
+        </div>
+
+        <div class="flex">
+            <label for="braendstof">Brændstof:</label>
+            <select id="braendstof" name="braendstof" required>
+                <option value="Benzin">Benzin</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Elektrisk">Elektrisk</option>
+                <option value="Hybrid">Hybrid</option>
+            </select>
+        </div>
+
+        <div class="flex">
+            <label for="farve">Farve:</label>
+            <input type="text" id="farve" name="farve" required>
+        </div>
+
+        <div class="flex">
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="Ledig">Ledig</option>
+                <option value="Udleveres">Udleveres</option>
+                <option value="Udlejet">Udlejet</option>
+                <option value="Vaerksted">Værksted</option>
+                <option value="Rengoeres">Rengøres</option>
+                <option value="Reserveret">Reserveret</option>
+            </select>
+        </div>
+
+        <div class="flex">
+            <label for="anhaengertraek">Anhængertræk:</label>
+            <input type="checkbox" id="anhaengertraek" name="anhaengertraek" value="true">
+        </div>
+
+        <div class="flex">
+            <label for="odometer">Odometer (km):</label>
+            <input type="number" id="odometer" name="odometer" required>
+        </div>
+
+        <div class="flex">
+            <label for="automatgear">Automatgear:</label>
+            <input type="checkbox" id="automatgear" name="automatgear" value="true">
+        </div>
+
+        <div class="flex">
+            <button type="submit">Opret Bil</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <form action="/opretAdresse" method="post">
+        <h2>Opret Adresse</h2>
+
+        <div class="flex">
+            <label for="vej_navn">Vejnavn:</label>
+            <input type="text" id="vej_navn" name="vej_navn">
+        </div>
+
+        <div class="flex">
+            <label for="vej_nummer">Vejnummer:</label>
+            <input type="number" id="vej_nummer" name="vej_nummer" required>
+        </div>
+
+        <div class="flex">
+            <label for="postnummer">Postnummer:</label>
+            <input type="number" id="postnummer" name="postnummer" required>
+        </div>
+
+        <div class="flex">
+            <button type="submit">Tilføj Adresse</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

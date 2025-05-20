@@ -359,4 +359,15 @@ public class HomeController {
 
         return "home/opretkunde";
     }
+
+    @GetMapping("/opretBil")
+    public String opretBil() {
+        return "home/opretBil";
+    }
+
+    @PostMapping("/opretBil")
+    public String opretBil(@ModelAttribute Bil bil) {
+        bilService.opretBil(bil);
+        return "redirect:/dataTilfoejet"; // godkendelses side
+    }
 }
