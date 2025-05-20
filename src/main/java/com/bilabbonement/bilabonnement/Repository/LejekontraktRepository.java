@@ -2,6 +2,7 @@ package com.bilabbonement.bilabonnement.Repository;
 
 import com.bilabbonement.bilabonnement.Model.Lejekontrakt;
 import com.bilabbonement.bilabonnement.Model.OmsaetningMaaned;
+import com.bilabbonement.bilabonnement.Model.UdlejningPris;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -62,5 +63,16 @@ public class LejekontraktRepository {
         return template.query(sql, rowMapper);
     }
 
-
+    public List<UdlejningPris> udlejningPris() {
+        // tager summen af prisen på lejekontrakter der kører lige nu
+        String sql = "SELECT l.valuta, SUM(l.pris) AS udlejning_pris\n" +
+                "FROM lejekontrakt l, bil b\n" +
+                "WHERE l.vognnummer = b.vognnummer\n" +
+                "  AND b.status = 'Udlejet'\n" +
+                "  AND CURDATE() >= l.startdato\n" +
+                "  AND CURDATE() <= l.slutdato\n" +
+                "GROUP BY l.valuta;\n";
+        RowMapper<UdlejningPris> rowMapper = new BeanPropertyRowMapper<>(UdlejningPris.class);
+        return template.query(sql, rowMapper);
+    }
 }

@@ -240,6 +240,9 @@ public class HomeController {
         List<Status> statusList = bilService.antalIStatus();
         model.addAttribute("statusList", statusList);
 
+        Double udlejning_pris = lejekontraktService.udlejningPris();
+        model.addAttribute("udlejning_pris",udlejning_pris);
+
         return "home/dashboard";
     }
 

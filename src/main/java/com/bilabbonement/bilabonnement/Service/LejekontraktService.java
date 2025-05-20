@@ -2,6 +2,7 @@ package com.bilabbonement.bilabonnement.Service;
 
 import com.bilabbonement.bilabonnement.Model.Lejekontrakt;
 import com.bilabbonement.bilabonnement.Model.OmsaetningMaaned;
+import com.bilabbonement.bilabonnement.Model.UdlejningPris;
 import com.bilabbonement.bilabonnement.Repository.LejekontraktRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +68,29 @@ public class LejekontraktService {
 
     public List<Lejekontrakt> findAlleAktive() {
         return lejekontraktRepository.findAlleAktive();
+    }
+
+    public Double udlejningPris() {
+
+        // tilføj data fra repository til en List
+        List<UdlejningPris> udlejningList = lejekontraktRepository.udlejningPris();
+        // ny variabel
+        Double udlejningPris = 0.0;
+
+        // kører listen igennem
+        for (UdlejningPris udlejning : udlejningList) {
+            //hvis valuta er euro skal udlejningsprisen ganges med 7,5 for at få det i DKK derefter ligges oven i variabel
+            if ("EURO".equals(udlejning.getValuta())) {
+                udlejningPris += udlejning.getUdlejningPris() * 7.5;
+            }
+            // hvis valuta er DKK skal udlejningsprisen bare ligges oven i variabel
+            if ("DKK".equals(udlejning.getValuta())) {
+                udlejningPris += udlejning.getUdlejningPris();
+            }
+        }
+
+        // returnerer udlejningsprisen
+        return udlejningPris;
     }
 
 }
