@@ -349,4 +349,7 @@ public class HomeController {
         adresseService.opretAdresse(adresse);
         return "redirect:/dataTilfoejet"; // godkendelses side
     }
+
+    @GetMapping("/opretkunde")
+    public String opretkunde(){return "home/opretkunde";}
 }
