@@ -6,16 +6,50 @@
     <link rel="stylesheet" href="/css/table.css">
     <!-- Ekstern CSS til header -->
     <link rel="stylesheet" th:href="@{/css/header.css}">
+    <!-- Ekstern CSS til billed-menuen -->
+    <link rel="stylesheet" th:href="@{/css/logindhome.css}">
+    <!-- Ekstern CCS til table -->
+    <link rel="stylesheet" th:href="@{/css/table.css}">
+    <style>
+        form, table {
+            margin-left: 220px;
+        }
+    </style>
 </head>
 <body>
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
-<!-- Inline margin -->
-<div style="margin-left: 220px; padding: 20px;">
+
+<div class="indhold"> <h1 style="text-align: center">Logget ind som forretnings udvikler</h1></div>
+
+<!-- Grid-menu med billeder -->
+<div class="grid-container">
+
+    <a th:href="@{/dashboard}" class="menu-item">
+        <img src="/images/dashboard.png" alt="Dashboard"/>
+        <div>Dashboard</div>
+    </a>
+
+    <a th:href="@{/statusbiler}" class="menu-item">
+        <img src="/images/addcar.png" alt="Status på biler"/>
+        <div>Status på biler</div>
+    </a>
+
+    <a th:href="@{/lagerstatus}" class="menu-item">
+        <img src="/images/lagerstatus.png" alt="Lagerstatus"/>
+        <div>Lagerstatus</div>
+    </a>
+
+    <a th:href="@{/indkoebBil}" class="menu-item">
+        <img src="/images/indkøb.png" alt="Indkøb bil"/>
+        <div>Indkøb af biler</div>
+    </a>
+</div>
+
 <!-- Indholdet rykket til højre så det ikke overlapper venstre header -->
 <div class="indhold">
-    <h1>Biler der er udlejet</h1>
-    <h2>Populære biler - antal udlejninger</h2>
+    <h1 style="text-align: center"> Biler der er udlejet</h1>
+    <h2 style="text-align: center">Populære biler - antal udlejninger</h2>
     <table>
         <thead>
         <tr>
@@ -36,7 +70,6 @@
         </tr>
         </tbody>
     </table>
-</div>
 </div>
 </body>
 </html>
