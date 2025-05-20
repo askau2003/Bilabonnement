@@ -341,6 +341,7 @@ public class HomeController {
     @GetMapping("/opretAdresse")
     public String opretAdresse(Model model) {
         List<Bynavn> bynavnList = bynavnService.selectAll();
+        model.addAttribute("bynavnList",bynavnList);
         return "home/opretAdresse";
     }
 
