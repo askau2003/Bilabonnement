@@ -399,4 +399,7 @@ public class HomeController {
         bynavnService.opretBy(bynavn);
         return "redirect:/opre"; // evt. en bekræftelsesside
     }
+
+    @GetMapping("/transport")
+    public String transport() {return "home/transport";}
 }
