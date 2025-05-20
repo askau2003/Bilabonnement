@@ -28,25 +28,22 @@
 
 <div class="indhold">
 
-    <!--Actions til og oprette en kontrakt-->
+    <!--Actions til og oprette en kunde-->
     <form action="/opretkunde" method="post">
         <label for="navn">Navn:</label>
         <input type="text" id="navn" name="navn"><br>
 
-        <label for="mail">Mail:</label>
-        <input type="text" id="mail" name="mail"><br>
+        <label for="email">Mail:</label>
+        <input type="email" id="email" name="email"><br>
 
-        <label for="cpr">CPR_nummer</label>
-        <input type="text" id="cpr" name="cpr"><br>
-
-        <label for="vognnummer">Vognnummer:</label>
-        <input type="number" id="vognnummer" name="vognnummer"><br>
+        <label for="cpr_nummer">CPR_nummer</label>
+        <input type="text" id="cpr_nummer" name="cpr_nummer"><br>
 
         <label for="koerekort">Kørekort_nummer:</label>
         <input type="number" id="koerekort" name="koerekort"><br>
 
-        <label for="adr">Adresse_ID:</label>
-        <input type="number" id="adr" name="adr"><br>
+        <label for="adresse_id">Adresse_ID:</label>
+        <input type="number" id="adresse_id" name="adresse_id"><br>
 
         <button type="submit">Opret kunde</button>
         <button type="reset" onclick="return confirm('er du sikker på du vil reset?')">Reset</button>

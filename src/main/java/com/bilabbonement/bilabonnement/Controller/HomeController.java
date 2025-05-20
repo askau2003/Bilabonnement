@@ -354,10 +354,24 @@ public class HomeController {
     @GetMapping("/opretkunde")
     public String opretkunde(Model model)
     {
-    List<Adresse> adresseList = adresseService.selectAll();
+        model.addAttribute("kunde", new Kunde());
+
+        List<Adresse> adresseList = adresseService.selectAll();
         model.addAttribute("adresseList",adresseList);
 
         return "home/opretkunde";
+    }
+
+    // opretter Kunden
+    @PostMapping("/opretkunde")
+    public String opretKundeSubmit(@ModelAttribute Kunde kunde, Model model) {
+
+        // Gemmer i databasen
+        kundeService.opretKunde(kunde);
+
+        model.addAttribute("kunde", kunde);// vis kunde på side vis nødvendigt
+
+        return "redirect:/dataTilfoejet";//vis at kunde er blevet oprettet
     }
 
     @GetMapping("/opretBil")

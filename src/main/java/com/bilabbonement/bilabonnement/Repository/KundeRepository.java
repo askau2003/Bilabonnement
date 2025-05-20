@@ -21,4 +21,19 @@ public class KundeRepository {
         RowMapper<Kunde> rowMapper = new BeanPropertyRowMapper<>(Kunde.class);
         return template.query(sql, rowMapper);
     }
+
+    public void opretKunde(Kunde kunde) {
+        String sql = "INSERT INTO kunde " +
+                "(navn, email, cpr_nummer, koerekortnummer, adresse_id) " +
+                "VALUES (?, ?, ?, ?, ?)";
+
+        template.update(sql,
+                kunde.getNavn(),
+                kunde.getEmail(),
+                kunde.getCpr_nummer(),
+                kunde.getKoerekortnummer(),
+                kunde.getAdresse_id()
+        );
+    }
+
 }
