@@ -352,5 +352,11 @@ public class HomeController {
     }
 
     @GetMapping("/opretkunde")
-    public String opretkunde(){return "home/opretkunde";}
+    public String opretkunde(Model model)
+    {
+    List<Adresse> adresseList = adresseService.selectAll();
+        model.addAttribute("adresseList",adresseList);
+
+        return "home/opretkunde";
+    }
 }
