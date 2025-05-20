@@ -15,7 +15,7 @@ public class Lejekontrakt {
     private int afhentnings_adresse;
     private int afleverings_adresse;
     private int vognnummer;
-    private int rapport_id;
+    private Integer rapport_id;
     private int lejer_id;
 
     public Lejekontrakt() {
@@ -24,7 +24,7 @@ public class Lejekontrakt {
     public Lejekontrakt(int kontrakt_id, LocalDate startdato, LocalDate slutdato, int pris, int depositum,
                         String valuta, LocalDate oprettelsesdato, LocalDate betalingsdato,
                         int afhentnings_adresse, int afleverings_adresse,
-                        int vognnummer, int rapport_id, int lejer_id) {
+                        int vognnummer, Integer rapport_id, int lejer_id) {
         this.kontrakt_id = kontrakt_id;
         this.startdato = startdato;
         this.slutdato = slutdato;
@@ -128,11 +128,11 @@ public class Lejekontrakt {
         this.vognnummer = vognnummer;
     }
 
-    public int getRapport_id() {
+    public Integer getRapport_id() {
         return rapport_id;
     }
 
-    public void setRapport_id(int rapport_id) {
+    public void setRapport_id(Integer rapport_id) {
         this.rapport_id = rapport_id;
     }
 
