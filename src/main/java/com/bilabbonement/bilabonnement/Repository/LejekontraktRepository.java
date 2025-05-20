@@ -75,4 +75,5 @@ public class LejekontraktRepository {
         RowMapper<UdlejningPris> rowMapper = new BeanPropertyRowMapper<>(UdlejningPris.class);
         return template.query(sql, rowMapper);
     }
+
 }

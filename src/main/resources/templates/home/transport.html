@@ -2,9 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <title>Opret transport</title>
+  <link rel="stylesheet" href="/css/lejeaftale.css">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
 
+  <style>
+    h1, form {
+      text-align: center;
+    }
+
+    .tabel {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
+
+  </style>
+  <link rel="stylesheet" href="/css/table.css">
+
+</head>
+
+<body>
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+<h1>Opret transport</h1>
+
+<div class="indhold">
+
+  <!--Actions til og oprette en transport-->
+  <form action="/transport" method="post">
+    <label for="lastbil_afhentnings_dato">Lastbil_afhentningsDato:</label>
+    <input type="date" id="lastbil_afhentnings_dato" name="lastbil_afhentnings_dato"><br>
+
+    <label for="lastbil_afleverings_dato">Lastbil_afleveringssDato:</label>
+    <input type="date" id="lastbil_afleverings_dato" name="lastbil_afleverings_dato"><br>
+
+    <label for="vognnummer">Vogn_nummer</label>
+    <input type="number" id="vognnummer" name="vognnummer"><br>
+
+    <button type="submit">Opret transport</button>
+    <button type="reset" onclick="return confirm('er du sikker på du vil reset?')">Reset</button>
+
+  </form>
+  <div class="tabel">
+    <table>
+      <thead>
+      <tr>
+        <th>Vogn_Id</th>
+        <th>Dato_forAfhentning</th>
+        <th>Dato_forAflevering</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="lejekontrakt : ${lejekontraktList}">
+        <td th:text="${lejekontrakt.kontrakt_id}"></td>
+        <td th:text="${lejekontrakt.startdato}"></td>
+        <td th:text="${lejekontrakt.slutdato}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
 </body>
 </html>

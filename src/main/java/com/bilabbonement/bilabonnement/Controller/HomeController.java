@@ -401,5 +401,24 @@ public class HomeController {
     }
 
     @GetMapping("/transport")
-    public String transport() {return "home/transport";}
+    public String transport(Model model)
+    {
+        model.addAttribute("transport", new Transport());
+        List<Lejekontrakt> lejekontraktList = lejekontraktService.findAlleAktive();
+        model.addAttribute("lejekontraktList",lejekontraktList);
+
+
+        return "home/transport";
+    }
+
+    @PostMapping("/transport")
+    public String transportSubmit(@ModelAttribute Transport transport, Model model) {
+
+        // Gemmer i databasen
+       transportService.opretTranportt(transport);
+
+        model.addAttribute("transport", transport);// vis kunde på side vis nødvendigt
+
+        return "redirect:/dataTilfoejet";//vis at kunde er blevet oprettet
+    }
 }
