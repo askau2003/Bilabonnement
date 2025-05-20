@@ -389,7 +389,8 @@ public class HomeController {
     }
 
     @GetMapping("/opretBy")
-    public String opretBy() {
+    public String opretByForm(Model model) {
+        model.addAttribute("bynavn", new Bynavn());
         return "home/opretBy";
     }
 
