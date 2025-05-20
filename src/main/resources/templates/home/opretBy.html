@@ -32,36 +32,39 @@
       justify-content: space-evenly;
     }
   </style>
+
+  <style>
+    /* Skjul piletaster i input[type="number"] i Chrome, Safari, Edge, Opera */
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button
+    {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Skjul piletaster i Firefox */
+    input[type=number]
+    {
+      -moz-appearance: textfield;
+    }
+  </style>
 </head>
 <body>
 
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
 
-<div class="indhold">
-  <h1 style="text-align: center">Opret Adresse</h1>
+<h1 style="text-align: center">Opret By</h1>
 
-  <form action="/opretAdresse" method="post">
-    <div class="flex">
-      <label for="vej_navn">Vejnavn: </label>
-      <input type="text" id="vej_navn" name="vej_navn">
-    </div>
+<form action="/opretBy" method="post" style="display: flex; flex-direction: column; align-items: center;">
+  <label for="postnummer">Postnummer:</label>
+  <input type="number" id="postnummer" name="postnummer" required>
 
-    <div class="flex">
-      <label for="vej_nummer">Vejnummer: </label>
-      <input type="number" id="vej_nummer" name="vej_nummer" required>
-    </div>
+  <label for="bynavn">Bynavn:</label>
+  <input type="text" id="bynavn" name="bynavn" required>
 
-    <div class="flex">
-      <label for="postnummer">Postnummer:</label>
-      <input type="number" id="postnummer" name="postnummer" required>
-    </div>
-
-    <div class="flex">
-      <button type="submit">Tilføj Adresse</button>
-      <button type="reset">Reset</button>
-    </div>
-  </form>
+  <button type="submit">Opret By</button>
+</form>
 
   <div class="tabel">
     <table>

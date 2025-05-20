@@ -389,15 +389,16 @@ public class HomeController {
     }
 
     @GetMapping("/opretBy")
-    public String opretByForm(Model model) {
-        model.addAttribute("bynavn", new Bynavn());
+    public String visByer(Model model) {
+        List<Bynavn> bynavnList = bynavnService.selectAll();
+        model.addAttribute("bynavnList", bynavnList);
         return "home/opretBy";
     }
 
     @PostMapping("/opretBy")
     public String opretBy(@ModelAttribute Bynavn bynavn) {
         bynavnService.opretBy(bynavn);
-        return "redirect:/opre"; // evt. en bekræftelsesside
+        return "redirect:/dataTilfoejet";
     }
 
     @GetMapping("/transport")
