@@ -28,11 +28,12 @@ public class HomeController {
     private final ForhaandsaftaleService forhaandsaftaleService;
     private final AdresseService adresseService;
     private final KundeService kundeService;
+    private final BynavnService bynavnService;
 
     @Autowired
     public HomeController(BilService bilService, BrugerService brugerService, LejekontraktService lejekontraktService,
                           SkaderapportService skaderapportService, TransportService transportService,
-                          ForhaandsaftaleService forhaandsaftaleService, AdresseService adresseService, KundeService kundeService) {
+                          ForhaandsaftaleService forhaandsaftaleService, AdresseService adresseService, KundeService kundeService, BynavnService bynavnService) {
         this.bilService = bilService;
         this.brugerService = brugerService;
         this.lejekontraktService = lejekontraktService;
@@ -41,6 +42,7 @@ public class HomeController {
         this.forhaandsaftaleService = forhaandsaftaleService;
         this.adresseService = adresseService;
         this.kundeService = kundeService;
+        this.bynavnService = bynavnService;
     }
 
 
@@ -179,13 +181,13 @@ public class HomeController {
     public String visOpretKontraktForm(Model model) {
         model.addAttribute("kontrakt", new Lejekontrakt());
         List<Adresse> adresseList = adresseService.selectAll();
-        model.addAttribute("adresseList",adresseList);
+        model.addAttribute("adresseList", adresseList);
 
         List<Bil> bilList = bilService.selectVognnummer();
-        model.addAttribute("bilList",bilList);
+        model.addAttribute("bilList", bilList);
 
         List<Kunde> kundeList = kundeService.selectLejerID();
-        model.addAttribute("kundeList",kundeList);
+        model.addAttribute("kundeList", kundeList);
 
         model.addAttribute("rapporter", skaderapportService.hentAlleRapporter());
         return "home/opretkontrakt";
@@ -216,7 +218,7 @@ public class HomeController {
     }
 
     // Håndterer form submission og gemmer skadesrapporten
-     @PostMapping("/skadesrapport")
+    @PostMapping("/skadesrapport")
     public String gemSkadesrapport(@ModelAttribute Skaderapport skadesrapport) {
         skaderapportService.gemNyRapport(skadesrapport);
         return "redirect:/skadesrapporter";
@@ -251,7 +253,7 @@ public class HomeController {
     @GetMapping("/reserveredeBiler")
     public String reserveredeBiler(Model model) {
         List<Bil> bilList = bilService.reserveredeBiler();
-        model.addAttribute("bilList",bilList);
+        model.addAttribute("bilList", bilList);
         return "home/reserveredeBiler";
     }
 
@@ -276,13 +278,13 @@ public class HomeController {
     @GetMapping("/opretForhaandsaftale")
     public String opretForhaandsaftale(Model model) {
         List<Adresse> adresseList = adresseService.selectAll();
-        model.addAttribute("adresseList",adresseList);
+        model.addAttribute("adresseList", adresseList);
 
         List<Bil> bilList = bilService.selectVognnummer();
-        model.addAttribute("bilList",bilList);
+        model.addAttribute("bilList", bilList);
 
         List<Kunde> kundeList = kundeService.selectLejerID();
-        model.addAttribute("kundeList",kundeList);
+        model.addAttribute("kundeList", kundeList);
         return "home/opretForhaandsaftale";
     }
 
@@ -334,5 +336,17 @@ public class HomeController {
         List<Lejekontrakt> kontrakter = lejekontraktService.findAlleAktive();
         model.addAttribute("kontrakter", kontrakter);
         return "home/afleveringer";
+    }
+
+    @GetMapping("/opretAdresse")
+    public String opretAdresse(Model model) {
+        List<Bynavn> bynavnList = bynavnService.selectAll();
+        return "home/opretAdresse";
+    }
+
+    @PostMapping("/opretAdresse")
+    public String opretAdresse(@ModelAttribute Adresse adresse) {
+        adresseService.opretAdresse(adresse);
+        return "redirect:/dataTilfoejet"; // godkendelses side
     }
 }

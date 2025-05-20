@@ -16,4 +16,8 @@ public class AdresseService {
     public List<Adresse> selectAll() {
         return adresseRepository.selectAll();
     }
+
+    public void opretAdresse(Adresse adresse) {
+        adresseRepository.opretAdresse(adresse);
+    }
 }

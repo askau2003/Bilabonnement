@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Opret Adresse</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/table.css">
+</head>
+<body>
+
+<!-- Genbrugt header via Thymeleaf fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+
+<h1>Opret Adresse</h1>
+
+<form action="/opretAdresse" method="post">
+    <div class="flex">
+        <label for="vej_navn">Vejnavn: </label>
+        <input type="text" id="vej_navn" name="vej_navn">
+    </div>
+
+    <div class="flex">
+        <label for="vej_nummer">Vejnummer: </label>
+        <input type="number" id="vej_nummer" name="vej_nummer" required>
+    </div>
+
+    <div class="flex">
+        <label for="postnummer">Postnummer:</label>
+        <input type="number" id="postnummer" name="postnummer" required>
+    </div>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>Postnummer</th>
+        <th>Bynavn</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="bynavn : ${bynavnList}">
+        <td th:text="${bynavn.postnummer}"></td>
+        <td th:text="${bynavn.bynavn}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
