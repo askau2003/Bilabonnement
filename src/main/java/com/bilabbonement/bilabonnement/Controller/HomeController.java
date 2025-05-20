@@ -335,4 +335,8 @@ public class HomeController {
         model.addAttribute("kontrakter", kontrakter);
         return "home/afleveringer";
     }
+
+    @GetMapping("/opretkunde")
+    public String opretkunde(){return "home/opretkunde";}
+
 }
