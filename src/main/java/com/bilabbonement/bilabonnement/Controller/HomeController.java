@@ -387,4 +387,15 @@ public class HomeController {
         bilService.opretBil(bil);
         return "redirect:/dataTilfoejet"; // godkendelses side
     }
+
+    @GetMapping("/opretBy")
+    public String opretBy() {
+        return "home/opretBy";
+    }
+
+    @PostMapping("/opretBy")
+    public String opretBy(@ModelAttribute Bynavn bynavn) {
+        bynavnService.opretBy(bynavn);
+        return "redirect:/opre"; // evt. en bekræftelsesside
+    }
 }

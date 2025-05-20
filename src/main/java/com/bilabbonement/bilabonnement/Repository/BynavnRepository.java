@@ -20,4 +20,9 @@ public class BynavnRepository {
         RowMapper<Bynavn> rowMapper = new BeanPropertyRowMapper<>(Bynavn.class);
         return template.query(sql, rowMapper);
     }
+
+    public void opretBy(Bynavn bynavn) {
+        String sql = "INSERT INTO bynavn (postnummer, bynavn) VALUES (?, ?)";
+        template.update(sql, bynavn.getPostnummer(), bynavn.getBynavn());
+    }
 }
