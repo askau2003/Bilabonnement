@@ -11,9 +11,9 @@ import java.util.List;
 public class BynavnService {
 
     @Autowired
-    private BynavnRepository repository;
+    private BynavnRepository bynavnRepository;
 
     public List<Bynavn> selectAll() {
-        return repository.selectAll();
+        return bynavnRepository.selectAll();
     }
 }
