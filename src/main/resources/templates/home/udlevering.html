@@ -6,14 +6,19 @@
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" href="/css/table.css">
     <style>
-        h1
-        {
+        h1 {
             text-align: center;
         }
-        table
-        {
+
+        table {
             margin: auto;
         }
+
+        .knap {
+            display: flex;
+            justify-content: center;
+        }
+
     </style>
 
 </head>
@@ -21,33 +26,36 @@
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
 <div class="indhold">
-<h1>Biler klar til udlevering</h1>
+    <h1>Biler klar til udlevering</h1>
 
-<form method="post" th:action="@{/opdaterStatus}">
-    <table border="1">
-        <tr>
-            <th>Vognnummer</th>
-            <th>Mærke</th>
-            <th>Model</th>
-            <th>Nummerplade</th>
-            <th>Status</th>
-            <th>Udleveret?</th>
-        </tr>
-        <tr th:each="bil : ${bilList}">
-            <td th:text="${bil.vognnummer}"></td>
-            <td th:text="${bil.maerke}"></td>
-            <td th:text="${bil.model}"></td>
-            <td th:text="${bil.nummerplade}"></td>
-            <td th:text="${bil.status}"></td>
-            <td>
-                <input type="checkbox" th:name="udlejedeBiler"
-                       th:value="${bil.vognnummer}">
-            </td>
-        </tr>
-    </table>
-    <br>
-    <button type="submit">Opdater status til "Udlejet"</button>
-</form>
+    <form method="post" th:action="@{/opdaterStatus}">
+        <table border="1">
+            <tr>
+                <th>Vognnummer</th>
+                <th>Mærke</th>
+                <th>Model</th>
+                <th>Nummerplade</th>
+                <th>Status</th>
+                <th>Udleveret?</th>
+            </tr>
+            <tr th:each="bil : ${bilList}">
+                <td th:text="${bil.vognnummer}"></td>
+                <td th:text="${bil.maerke}"></td>
+                <td th:text="${bil.model}"></td>
+                <td th:text="${bil.nummerplade}"></td>
+                <td th:text="${bil.status}"></td>
+                <td>
+                    <input type="checkbox" th:name="udlejedeBiler"
+                           th:value="${bil.vognnummer}">
+                </td>
+            </tr>
+        </table>
+        <br>
+
+        <div class="knap">
+            <button type="submit">Opdater status til "Udlejet"</button>
+        </div>
+    </form>
 
 </div>
 </body>

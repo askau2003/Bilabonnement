@@ -6,13 +6,22 @@
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/table.css}">
     <link rel="stylesheet" th:href="@{/css/statusbiler.css}">
+
+    <style>
+        form {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
 <!-- Genbrugt header -->
 <div th:replace="~{fragments/header :: header}"></div>
 
-<div style="margin-left: 220px; padding: 20px;">
+<div>
     <div class="indhold">
+
+        <h1 style="text-align: center">Status på biler</h1>
 
         <form th:action="@{/bil/skiftStatus}" method="post">
             <label for="vognnummer">Vælg bil:</label>
@@ -39,7 +48,6 @@
         </form>
 
         <hr>
-        <h1>Status på biler</h1>
 
         <div class="kanban-container">
             <div class="kanban-column" th:each="entry : ${bilerGrupperet}">

@@ -26,7 +26,7 @@
             padding: 10px; /* mellemrum inde i celler */
         }
 
-        p, h3 {
+        p, .overskrift {
             color: white; /* tekstfarve */
             text-align: center; /* centrer tekst */
         }
@@ -36,7 +36,7 @@
             font-weight: bold; /* fed skrift */
         }
 
-        h3 {
+        .overskrift {
             font-size: 25px; /* størrelse på h3 */
             font-weight: bold; /* fed skrift */
         }
@@ -71,26 +71,26 @@
 
     <div class="linje">
         <div class="kasse">
-            <h3>Gennemsnitlig Betalingstid</h3>
+            <h3 class="overskrift">Gennemsnitlig Betalingstid</h3>
             <p><span th:text="${gennemsnitlig_betalingstid}"></span> dage</p>
         </div>
         <div class="kasse">
-            <h3>Gennemsnitlig Transporttid</h3>
+            <h3 class="overskrift">Gennemsnitlig Transporttid</h3>
             <p><span th:text="${gennemsnitlig_transporttid}"></span> dage</p>
         </div>
         <div class="kasse">
-            <h3>Tid imellem udlejninger</h3>
+            <h3 class="overskrift">Tid imellem udlejninger</h3>
         </div>
         <div class="kasse">
-            <h3>Denne måneds omsætning</h3>
+            <h3 class="overskrift">Denne måneds omsætning</h3>
             <p><span th:text="${totalOmsaetning}"></span> DKK</p>
         </div>
         <div class="kasse">
-            <h3>Omsætning for året</h3>
+            <h3 class="overskrift">Omsætning for året</h3>
             <img src="/images/chart.png" alt="Graf over månedlig omsætning" class="graf">
         </div>
         <div class="kasse">
-            <h3>Antal af biler i hvert stadie</h3>
+            <h3 class="overskrift">Antal af biler i hvert stadie</h3>
             <div class="tabel">
                 <table>
                     <thead>

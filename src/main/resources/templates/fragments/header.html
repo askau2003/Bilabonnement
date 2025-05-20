@@ -1,85 +1,85 @@
 <div th:fragment="header" class="side-header">
 
-  <!-- Logo med tilbage-knap -->
-  <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}"
-     th:href="@{/forretninghome}" class="Tilbage">
-    <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
-  </a>
+    <!-- Logo med tilbage-knap -->
+    <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}"
+       th:href="@{/forretninghome}" class="Tilbage">
+        <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
+    </a>
 
-  <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrationsmedarbejder'}"
-     th:href="@{/logindhome}" class="Tilbage">
-    <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
-  </a>
+    <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrationsmedarbejder'}"
+       th:href="@{/logindhome}" class="Tilbage">
+        <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
+    </a>
 
-  <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'superadmin'}"
-     th:href="@{/superadminhome}" class="Tilbage">
-    <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
-  </a>
+    <a th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'superadmin'}"
+       th:href="@{/superadminhome}" class="Tilbage">
+        <img src="/images/BILABONNEMENT_logo.png" height="40" width="200" alt="Tilbage"/>
+    </a>
 
-  <!-- Menutitel -->
-  <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}">
-    Menu
-  </h2>
+    <!-- Menutitel -->
+    <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}">
+        Menu
+    </h2>
 
-  <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrationsmedarbejder'}">
-    Menu
-  </h2>
+    <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrationsmedarbejder'}">
+        Menu
+    </h2>
 
-  <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'superadmin'}">
-    Menu
-  </h2>
+    <h2 th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'superadmin'}">
+        Menu
+    </h2>
 
-  <!-- Forretningsudvikler-menu -->
-  <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}">
-    <li><a href="/dashboard">Dashboard</a></li>
-    <br>
-    <hr>
+    <!-- Forretningsudvikler-menu -->
+    <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'forretningsudvikler'}">
+        <li><a href="/dashboard">Dashboard</a></li>
 
-    <li><a href="/statusbiler">Status på biler</a></li>
-    <li><a href="/lagerstatus">Lagerstatus</a></li>
-    <li><a href="/indkoebBil">Indkøb Bil</a></li>
-  </ul>
+        <li><a href="/statusbiler">Status på biler</a></li>
+        <li><a href="/lagerstatus">Lagerstatus</a></li>
+        <li><a href="/indkoebBil">Indkøb Bil</a></li>
+    </ul>
 
-  <!-- Administrationsmedarbejder-menu -->
-  <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrationsmedarbejder'}">
-    <li><a href="/dashboard">Dashboard</a></li>
-    <br>
-    <hr>
+    <!-- Administrationsmedarbejder-menu -->
+    <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'administrationsmedarbejder'}">
+        <li><a href="/dashboard">Dashboard</a></li>
 
-    <li><a href="/opretkontrakt">Opret Lejekontrakt</a></li>
-    <li><a href="/opretForhaandsaftale">Opret Forhåndsaftale</a></li>
-    <li><a href="/skadesrapporter">Opret Skadesrapport</a></li>
-    <br>
-    <hr>
+        <hr>
+        <h3>Opret</h3>
+        <li><a href="/opretkontrakt">Opret Lejekontrakt</a></li>
+        <li><a href="/opretForhaandsaftale">Opret Forhåndsaftale</a></li>
+        <li><a href="/skadesrapporter">Opret Skadesrapport</a></li>
+        <br>
+        <hr>
 
-    <li><a href="/lagerstatus">Lagerstatus</a></li>
-    <li><a href="/statusbiler">Status på biler</a></li>
-    <li><a href="/reserveredeBiler">Reserverede Biler</a></li>
-    <li><a href="/udlevering">Udleveringer</a></li>
-    <li><a href="/alarmer">Alarmer</a></li>
-  </ul>
+        <li><a href="/lagerstatus">Lagerstatus</a></li>
+        <li><a href="/statusbiler">Status på biler</a></li>
+        <li><a href="/reserveredeBiler">Reserverede Biler</a></li>
+        <li><a href="/udlevering">Udleveringer</a></li>
+        <li><a href="/afleveringer">Tilbagelevering</a></li>
+        <li><a href="/alarmer">Alarmer</a></li>
+    </ul>
 
-  <!-- Superadmin-menu -->
-  <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'superadmin'}">
-    <li><a href="/dashboard">Dashboard</a></li>
-    <br>
-    <hr>
+    <!-- Superadmin-menu -->
+    <ul th:if="${session.bruger != null and session.bruger.rolle.toLowerCase() == 'superadmin'}">
+        <li><a href="/dashboard">Dashboard</a></li>
 
-    <li><a href="/opretkontrakt">Opret Lejekontrakt</a></li>
-    <li><a href="/opretForhaandsaftale">Opret Forhåndsaftale</a></li>
-    <li><a href="/skadesrapporter">Opret Skadesrapport</a></li>
-    <br>
-    <hr>
+        <hr>
+        <h3>Opret</h3>
+        <li><a href="/opretkontrakt">Opret Lejekontrakt</a></li>
+        <li><a href="/opretForhaandsaftale">Opret Forhåndsaftale</a></li>
+        <li><a href="/skadesrapporter">Opret Skadesrapport</a></li>
+        <br>
+        <hr>
 
-    <li><a href="/lagerstatus">Lagerstatus</a></li>
-    <li><a href="/statusbiler">Status på biler</a></li>
-    <li><a href="/reserveredeBiler">Reserverede Biler</a></li>
-    <li><a href="/indkoebBil">Indkøb Bil</a></li>
-    <li><a href="/udlevering">Udleveringer</a></li>
-    <li><a href="/alarmer">Alarmer</a></li>
-  </ul>
+        <li><a href="/lagerstatus">Lagerstatus</a></li>
+        <li><a href="/statusbiler">Status på biler</a></li>
+        <li><a href="/reserveredeBiler">Reserverede Biler</a></li>
+        <li><a href="/indkoebBil">Indkøb Bil</a></li>
+        <li><a href="/udlevering">Udleveringer</a></li>
+        <li><a href="/afleveringer">Tilbagelevering</a></li>
+        <li><a href="/alarmer">Alarmer</a></li>
+    </ul>
 
-  <!-- Log ud knap med ny klasse -->
-  <a th:href="@{/}" class="logout-button">Log ud</a>
+    <!-- Log ud knap med ny klasse -->
+    <a th:href="@{/}" class="logout-button">Log ud</a>
 
 </div>
