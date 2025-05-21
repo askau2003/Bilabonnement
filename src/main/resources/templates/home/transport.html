@@ -33,10 +33,10 @@
 
   <!--Actions til og oprette en transport-->
   <form action="/transport" method="post">
-    <label for="lastbil_afhentnings_dato">Lastbil_afhentningsDato:</label>
+    <label for="lastbil_afhentnings_dato">Lastbil afhentnings dato:</label>
     <input type="date" id="lastbil_afhentnings_dato" name="lastbil_afhentnings_dato"><br>
 
-    <label for="lastbil_afleverings_dato">Lastbil_afleveringssDato:</label>
+    <label for="lastbil_afleverings_dato">Lastbil afleverings dato:</label>
     <input type="date" id="lastbil_afleverings_dato" name="lastbil_afleverings_dato"><br>
 
     <label for="vognnummer">Vogn_nummer</label>
@@ -46,11 +46,34 @@
     <button type="reset" onclick="return confirm('er du sikker på du vil reset?')">Reset</button>
 
   </form>
+
   <div class="tabel">
+
     <table>
       <thead>
       <tr>
-        <th>Vogn nummer</th>
+        <th>Vognnummer</th>
+        <th>Stelnummer</th>
+        <th>Nummerplade</th>
+        <th>Mærke</th>
+        <th>Model</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="bil : ${bilList}">
+        <td th:text="${bil.vognnummer}"></td>
+        <td th:text="${bil.stelnummer}"></td>
+        <td th:text="${bil.nummerplade}"></td>
+        <td th:text="${bil.maerke}"></td>
+        <td th:text="${bil.model}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Vognnummer</th>
         <th>Dato for afhentning</th>
         <th>Dato for aflevering</th>
       </tr>
