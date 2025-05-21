@@ -1,87 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Opret Adresse</title>
-  <link rel="stylesheet" href="/css/header.css">
-  <link rel="stylesheet" href="/css/table.css">
+    <meta charset="UTF-8">
+    <title>Opret Adresse</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/table.css">
 
-  <style>
-    form {
-      display: flex;
-      justify-content: center;
-      align-content: center;
-      text-align: center;
-      flex-direction: column;
-      align-items: center;
-    }
+    <style>
+        form {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .flex {
-      flex-direction: row;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
 
-    table {
-      width: 60%;
-      margin: 20px;
-    }
+        .flex {
+            flex-direction: row;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
 
-    .tabel {
-      display: flex;
-      justify-content: space-evenly;
-    }
-  </style>
+        table {
+            width: 60%;
+            margin: 20px;
+        }
 
-  <style>
-    /* Skjul piletaster i input[type="number"] i Chrome, Safari, Edge, Opera */
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button
-    {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+        .tabel {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
 
-    /* Skjul piletaster i Firefox */
-    input[type=number]
-    {
-      -moz-appearance: textfield;
-    }
-  </style>
+    <style>
+        /* Skjul piletaster i input[type="number"] i Chrome, Safari, Edge, Opera */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Skjul piletaster i Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 <body>
 
 <!-- Genbrugt header via Thymeleaf fragment -->
 <div th:replace="~{fragments/header :: header}"></div>
 
-<h1 style="text-align: center">Opret By</h1>
+<div class="indhold">
+    <h1 style="text-align: center">Opret By</h1>
 
-<form action="/opretBy" method="post" style="display: flex; flex-direction: column; align-items: center;">
-  <label for="postnummer">Postnummer:</label>
-  <input type="number" id="postnummer" name="postnummer" required>
+    <form action="/opretBy" method="post" style="display: flex; flex-direction: column; align-items: center;">
+        <div class="flex">
+            <label for="postnummer">Postnummer:</label>
+            <input type="number" id="postnummer" name="postnummer" required>
+        </div>
+        <div class="flex">
+            <label for="bynavn">Bynavn:</label>
+            <input type="text" id="bynavn" name="bynavn" required>
+        </div>
+        <div class="flex">
+            <button type="submit">Opret By</button>
+            <button type="reset">Reset</button>
+        </div>
 
-  <label for="bynavn">Bynavn:</label>
-  <input type="text" id="bynavn" name="bynavn" required>
+    </form>
 
-  <button type="submit">Opret By</button>
-</form>
-
-  <div class="tabel">
-    <table>
-      <thead>
-      <tr>
-        <th>Postnummer</th>
-        <th>Bynavn</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr th:each="bynavn : ${bynavnList}">
-        <td th:text="${bynavn.postnummer}"></td>
-        <td th:text="${bynavn.bynavn}"></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="tabel">
+        <table>
+            <thead>
+            <tr>
+                <th>Postnummer</th>
+                <th>Bynavn</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="bynavn : ${bynavnList}">
+                <td th:text="${bynavn.postnummer}"></td>
+                <td th:text="${bynavn.bynavn}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
