@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/table.css}">
 
     <style>
-        form, .overskrift, table {
+        form, .overskrift, table, h1, p {
             margin-left: 220px;
         }
     </style>
@@ -16,10 +16,10 @@
 <!-- Genbrugt header -->
 <div th:replace="~{fragments/header :: header}"></div>
 
-<!-- Inline margin -->
+
 <div>
     <div class="indhold">
-        <h1 style="text-align: center"> Logget ind som Super Admin </h1>
+        <h1> Logget ind som Super Admin </h1>
 
         <!-- Success- eller fejlbesked -->
         <div th:if="${besked}" style="color: green;">
@@ -49,7 +49,7 @@
 
         <!-- tabel som viser eksiterne brugere -->
 <h2 class="overskrift">Eksisterende brugere</h2>
-<table border="1">
+<table>
     <thead>
     <tr>
         <th>Brugernavn</th>

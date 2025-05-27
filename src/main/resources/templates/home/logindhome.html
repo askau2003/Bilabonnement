@@ -24,6 +24,12 @@
 <div class="grid-container">
 
     <!-- Hver menu-item er en klikbar boks med billede og tekst -->
+    <a th:href="@{/opretkunde}" class="menu-item">
+        <img src="/images/opretkunde.png" alt="Opret Kunde"/>
+        <div>Opret Kunde</div>
+    </a>
+
+
     <a th:href="@{/opretkontrakt}" class="menu-item">
         <img src="/images/Lejeaftale.png" alt="Opret Lejekontrakt"/>
         <div>Opret Lejekontrakt</div>
@@ -72,6 +78,11 @@
     <a th:href="@{/afleveringer}" class="menu-item">
         <img src="/images/tilbagelevering.png" alt="Tilbage levering"/>
         <div>Tilbage levering</div>
+    </a>
+
+    <a th:href="@{/transport}" class="menu-item">
+        <img src="/images/transport.png" alt="Transport"/>
+        <div>Transport</div>
     </a>
 
     <a th:href="@{/alarmer}" class="menu-item">

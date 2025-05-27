@@ -406,6 +406,10 @@ public class HomeController {
     {
         model.addAttribute("transport", new Transport());
         List<Lejekontrakt> lejekontraktList = lejekontraktService.findAlleAktive();
+
+        List<Bil> bilList = bilService.selectVognnummer();
+        model.addAttribute("bilList", bilList);
+
         model.addAttribute("lejekontraktList",lejekontraktList);
 
 
