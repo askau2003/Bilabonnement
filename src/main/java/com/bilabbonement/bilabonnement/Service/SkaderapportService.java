@@ -37,5 +37,4 @@ public class SkaderapportService {
         return repository.findByVognnummer(vognnummer);
     }
 
-
 }

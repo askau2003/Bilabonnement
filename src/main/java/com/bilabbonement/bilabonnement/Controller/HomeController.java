@@ -214,7 +214,7 @@ public class HomeController {
     @GetMapping("/skadesrapporter")
     public String visAlleRapporter(Model model) {
         model.addAttribute("rapporter", skaderapportService.hentAlleRapporter());
-        return "home/skadesrapporter"; // <- du skal have en HTML med dette navn
+        return "home/skadesrapporter";
     }
 
     // Håndterer form submission og gemmer skadesrapporten
@@ -355,7 +355,7 @@ public class HomeController {
     }
 
     @GetMapping("/opretkunde")
-    public String opretkunde(Model model)
+    public String opretKunde(Model model)
     {
         model.addAttribute("kunde", new Kunde());
 
